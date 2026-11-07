@@ -1,0 +1,50 @@
+
+:root{--bg:#f6f1ea;--card:#fffdf9;--ink:#1f1b16;--muted:#6f655a;--line:#e4dacd;--accent:#b4532a;--accent-ink:#fff;--ok:#1f7a4d;--wa:#1f8f4e;--sold:#8b2c1d}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17140f;--card:#211d17;--ink:#f3ece2;--muted:#b3a796;--line:#3a332a;--accent:#e07a4b;--accent-ink:#1a120c;--wa:#2fae66;--sold:#e0705b}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+h1,h2,.serif{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.01em}
+header.hero{padding:40px 0 20px}
+.hero h1{font-size:clamp(34px,7vw,60px);line-height:1.02;margin:0 0 10px}
+.hero p{margin:0;color:var(--muted);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px}
+.filtros{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.filtros button{flex:none;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
+.filtros button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;padding:20px 0 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.card a.foto{aspect-ratio:4/3;background:var(--line);display:block;overflow:hidden}
+.card a.foto img{width:100%;height:100%;object-fit:cover}
+.card .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h2{font-size:19px;line-height:1.2;margin:0}
+.card h2 a{text-decoration:none}
+.precio{font-weight:700;font-size:18px}.precio.consultar{font-weight:500;color:var(--muted);font-size:15px}
+.nuevo{color:var(--muted);font-size:13px}
+.cat{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:600;border-radius:10px;padding:11px 14px;background:var(--wa);color:#fff;border:0;font-size:15px;margin-top:auto}
+.btn[aria-disabled=true]{background:var(--line);color:var(--muted);pointer-events:none}
+.sello{position:absolute;top:12px;left:12px;background:var(--sold);color:#fff;font-weight:800;letter-spacing:.1em;font-size:13px;padding:5px 10px;border-radius:6px;transform:rotate(-4deg)}
+.sello.apartado{background:#b8860b}
+.card.vendido a.foto img{filter:grayscale(1) opacity(.6)}
+.sinfoto{display:grid;place-items:center;height:100%;color:var(--muted);font-size:14px}
+.ocultar-vendidos .card.vendido{display:none}
+label.toggle{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);flex:none;padding-left:4px}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px}
+/* artículo */
+.volver{display:inline-block;padding:16px 0;text-decoration:none;color:var(--muted)}
+.art{display:grid;gap:24px;padding-bottom:110px}
+@media(min-width:860px){.art{grid-template-columns:1.3fr 1fr;align-items:start}.panel{position:sticky;top:16px}}
+.galeria{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:14px;scrollbar-width:thin}
+.galeria img{flex:none;width:100%;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:start;border-radius:14px;background:var(--line)}
+.galeria.una img{width:100%}
+.contador{font-size:13px;color:var(--muted);margin-top:6px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.panel h1{font-size:clamp(26px,4vw,34px);line-height:1.1;margin:4px 0 10px}
+.panel ul{padding-left:18px;margin:12px 0}
+.panel .btn{width:100%;margin-top:12px}
+.barra{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);display:flex;gap:12px;align-items:center}
+.barra .btn{flex:1;margin:0}
+@media(min-width:860px){.barra{display:none}}
