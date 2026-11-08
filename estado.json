@@ -1,12 +1,16 @@
 {
   "estados": {
     "air-fryer-ninja": "pausado",
+    "aire-acondicionado-pinguino": "apartado",
     "cafetera-nespresso": "vendido",
     "cama-mascota": "pausado",
     "mueble-tv": "vendido",
+    "poltrona-boal": "pausado",
     "sillas-comedor": "vendido",
+    "tapete-grande-ikea-lokbyte-azul": "apartado",
     "tapete-gris-rombos": "pausado",
     "tv-samsung-65": "pausado",
-    "tv-the-frame-55": "vendido"
+    "tv-the-frame-55": "vendido",
+    "zapatero": "apartado"
   }
 }
