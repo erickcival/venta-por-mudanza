@@ -64,6 +64,7 @@ dialog.dlg::backdrop{background:rgba(0,0,0,.5)}
 .dlg .vacio{padding:30px 18px;text-align:center;color:var(--muted)}
 .barra .acciones{flex:1;margin:0}.barra .bp{flex:none}.barra .btn,.barra .btn2{white-space:nowrap;padding:11px 10px}.barra .precio{font-size:16px}.barra .nuevo{display:none}
 body.con-carro .fab{display:none}
+.pdfbtn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink);border-radius:10px;padding:9px 14px}
 /* artículo */
 .volver{display:inline-block;padding:16px 0;text-decoration:none;color:var(--muted)}
 .art{display:grid;gap:24px;padding-bottom:110px}
