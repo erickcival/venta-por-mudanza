@@ -109,9 +109,10 @@
    "slug": "futon",
    "titulo": "Futón con colchón capitonado",
    "categoria": "Sala",
-   "precio": null,
+   "precio": 4000,
    "descripcion": "Futón con base de madera oscura y colchón grueso capitonado en color marfil. Funciona como sillón y se abre como cama para visitas.",
    "detalles": [
+    "Medidas: 212 × 100 × 78 cm (largo × fondo × alto)",
     "Base de madera",
     "Colchón capitonado color marfil",
     "Se convierte en cama"
@@ -122,14 +123,15 @@
   },
   {
    "slug": "sofa-sala-3-plazas",
-   "titulo": "Sofá de 3 plazas en tela beige",
+   "titulo": "Sofá de 1 módulo en tela beige (3 plazas)",
    "categoria": "Sala",
-   "precio": null,
+   "precio": 5000,
    "descripcion": "Sofá de líneas rectas tapizado en tela beige, con cojines de respaldo y asiento amplios y patas metálicas oscuras.",
    "detalles": [
+    "Medidas: 250 × 92 × 67 cm (largo × fondo × alto)",
+    "1 módulo, 3 plazas",
     "Tela beige",
-    "Patas metálicas",
-    "1 pieza"
+    "Patas metálicas"
    ],
    "_img": [
     "sofa-sala-3-plazas-1",
