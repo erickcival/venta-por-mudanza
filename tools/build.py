@@ -126,6 +126,18 @@ def aplicar_hoja(items, est, hoja):
             a["precio"] = hoja[a["slug"]][1]
 
 
+def leer_precios(sitio):
+    """sitio/precios.json: precios cambiados desde el centro de control ({slug: precio}). Ganan sobre articulos.json."""
+    f = sitio / "precios.json"
+    return json.loads(f.read_text()) if f.exists() else {}
+
+
+def aplicar_precios(items, precios):
+    for a in items:
+        if precios.get(a["slug"]):
+            a["precio"] = precios[a["slug"]]
+
+
 def leer_estado(sitio):
     f = sitio / "estado.json"
     return json.loads(f.read_text()) if f.exists() else {"estados": {}}
@@ -496,7 +508,7 @@ def generar_pdf(cfg, items):
     return out
 
 
-PUBLICOS = ("slug", "titulo", "categoria", "precio", "precio_nuevo", "por_unidad", "unidades",
+PUBLICOS = ("slug", "titulo", "categoria", "precio", "precio_lista", "precio_nuevo", "por_unidad", "unidades",
             "descripcion", "detalles", "referencia", "_img")
 
 
@@ -516,6 +528,8 @@ def main_ci(sitio):
     SITIO = Path(sitio).resolve()
     cat = json.loads((SITIO / "catalogo.json").read_text())
     cfg, items = cat["config"], cat["articulos"]
+    for a in items:
+        a["precio"] = a.get("precio_lista", a.get("precio"))
     est = leer_estado(SITIO)
     hoja = leer_hoja(cfg)
     firma = hashlib.md5(json.dumps(hoja, sort_keys=True).encode()).hexdigest()[:8] if hoja else ""
@@ -524,6 +538,7 @@ def main_ci(sitio):
         print("Sin cambios en la hoja; no se regenera el PDF.")
         return
     aplicar_hoja(items, est, hoja)
+    aplicar_precios(items, leer_precios(SITIO))
     aplicar_estado(items, est)
     generar_pdf(cfg, items)
     guardar_pdf_version(SITIO, est, firma)
@@ -557,6 +572,12 @@ def main():
     if hoja:
         (SITIO / "estado.json").write_text(json.dumps(est, ensure_ascii=False, indent=2) + "\n")
     firma = hashlib.md5(json.dumps(hoja, sort_keys=True).encode()).hexdigest()[:8] if hoja else ""
+    for a in items:
+        a["precio_lista"] = a.get("precio")
+    precios = leer_precios(SITIO)
+    for s_ in set(precios) - {a["slug"] for a in items}:
+        avisos.append(f"precios.json menciona un artículo que ya no existe: {s_}")
+    aplicar_precios(items, precios)
     aplicar_estado(items, est)
     procesar_fotos(items)
     (SITIO / "estilo.css").write_text(CSS)
@@ -577,7 +598,11 @@ def main():
     shutil.copy(RAIZ / "build.py", SITIO / "tools" / "build.py")
     wf = SITIO / ".github" / "workflows"
     wf.mkdir(parents=True, exist_ok=True)
-    shutil.copy(RAIZ / "pdf-workflow.yml", wf / "pdf.yml")
+    shutil.copy(RAIZ / "control-workflow.yml", wf / "control.yml")
+    (wf / "pdf.yml").unlink(missing_ok=True)
+    shutil.copy(RAIZ / "control_robot.py", SITIO / "tools" / "control_robot.py")
+    (SITIO / "control").mkdir(exist_ok=True)
+    (SITIO / "control" / "index.html").write_text((RAIZ / "control.html").read_text())
     if "--sin-pdf" not in sys.argv:
         generar_pdf(cfg, items)
         guardar_pdf_version(SITIO, est, firma)

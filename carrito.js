@@ -193,9 +193,9 @@
 
   function cargarEstado() {
     const t = Date.now();
-    const deJSON = () => fetch(BASE + "estado.json?t=" + t, { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => (j ? { est: j.estados || {}, precios: {} } : null));
+    const json = (f) => fetch(BASE + f + "?t=" + t, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    const deJSON = () => Promise.all([json("estado.json"), json("precios.json")])
+      .then(([e, p]) => (e || p ? { est: (e && e.estados) || {}, precios: p || {} } : null));
     const fuente = V.hoja
       ? fetch(V.hoja + (V.hoja.includes("?") ? "&" : "?") + "t=" + t, { cache: "no-store" })
           .then((r) => (r.ok ? r.text() : Promise.reject())).then(desdeHoja).then((d) => d || deJSON()).catch(deJSON)

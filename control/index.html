@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1f1b16">
+<title>Centro de control</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎛️</text></svg>">
+<style>
+:root{--bg:#f6f1ea;--card:#fffdf9;--ink:#1f1b16;--muted:#6f655a;--line:#e4dacd;--accent:#b4532a;--ok:#1f7a4d;--warn:#b8860b;--sold:#8b2c1d;--pause:#5b6470;--wa:#1f8f4e;--pend:#2f5fb3}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17140f;--card:#211d17;--ink:#f3ece2;--muted:#b3a796;--line:#3a332a;--accent:#e07a4b;--ok:#3fbf80;--warn:#e0b040;--sold:#e0705b;--pause:#9aa3ad;--wa:#2fae66;--pend:#7aa2f0}}
+:root[data-theme=dark]{--bg:#17140f;--card:#211d17;--ink:#f3ece2;--muted:#b3a796;--line:#3a332a;--accent:#e07a4b;--ok:#3fbf80;--warn:#e0b040;--sold:#e0705b;--pause:#9aa3ad;--wa:#2fae66;--pend:#7aa2f0}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0 10px}
+.fila{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.menu{font:inherit;font-size:22px;background:none;border:0;color:var(--ink);padding:4px 8px;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 4px;text-align:center}
+.stat b{display:block;font-size:20px;line-height:1.1}.stat span{font-size:11px;color:var(--muted)}
+.dinero{display:flex;gap:6px;margin-top:6px;font-size:13px;color:var(--muted);flex-wrap:wrap}.dinero b{color:var(--ink)}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+.chips button{flex:none;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+input,textarea{font:inherit;font-size:16px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input[type=checkbox]{width:20px;height:20px;padding:0}
+#q{margin-top:10px}
+ul.lista{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.it{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.it.pend{border-color:var(--pend);box-shadow:0 0 0 1px var(--pend)}
+.it.pausado .cab img{opacity:.55}
+.cab{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:10px 12px 8px}
+.cab img,.cab .ph{width:56px;height:56px;border-radius:8px;object-fit:cover;background:var(--line)}
+.cab .t{font-weight:600;font-size:15px;line-height:1.2}
+.cab .p{font-size:13px;color:var(--muted)}
+.badge{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:6px;padding:3px 7px;color:#fff;white-space:nowrap;text-align:center}
+.b-disponible{background:var(--ok)}.b-apartado{background:var(--warn)}.b-vendido{background:var(--sold)}.b-pausado{background:var(--pause)}
+.b-pend{background:var(--pend);display:block;margin-top:4px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);margin:0 12px 8px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;font-weight:600;padding:10px 2px;border:0;border-right:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true].disponible{background:var(--ok);color:#fff}
+.seg button[aria-pressed=true].apartado{background:var(--warn);color:#fff}
+.seg button[aria-pressed=true].vendido{background:var(--sold);color:#fff}
+.seg button[aria-pressed=true].pausado{background:var(--pause);color:#fff}
+.precio{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;margin:0 12px 10px;font-size:14px;color:var(--muted)}
+.precio input{padding:8px 10px}
+.mas{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:6px 0}
+.det{border-top:1px solid var(--line);padding:12px;display:grid;gap:10px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+label.campo{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.checks{display:flex;gap:18px;font-size:15px}.checks label{display:flex;align-items:center;gap:6px}
+.acc{display:flex;gap:8px;flex-wrap:wrap}
+.b{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.b.prim{background:var(--ink);color:var(--bg)}.b.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.b.azul{background:var(--pend);border-color:var(--pend);color:#fff}
+.nota{font-size:13px;color:var(--muted)}
+.guardar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:2px solid var(--pend);padding:12px 16px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(0,0,0,.15)}
+.guardar .wrap{display:flex;gap:8px;align-items:center;padding:0}
+.guardar .b.azul{flex:1}
+.toast{position:fixed;left:16px;right:16px;top:calc(12px + env(safe-area-inset-top));z-index:30;background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:560px;margin:0 auto}
+.toast.err{background:var(--sold);color:#fff}
+.vacio{padding:30px 0;text-align:center;color:var(--muted)}
+dialog{border:0;border-radius:16px;padding:18px;width:min(460px,calc(100% - 24px));background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{margin:0 0 10px;font-size:20px}
+dialog ol{padding-left:20px;margin:8px 0 14px}dialog li{margin:6px 0}
+dialog .acc{flex-direction:column}
+.espera{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--pend);margin-top:6px}
+</style>
+</head>
+<body>
+<div id="app"><div class="wrap vacio">Cargando…</div></div>
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<div id="barra" class="guardar" hidden></div>
+<dialog id="dlg"></dialog>
+
+<script>
+(() => {
+  const REPO = "erickcival/venta-por-mudanza";            // estado y precios (públicos) se aplican aquí
+  const PRIV = "erickcival/venta-por-mudanza-privado";    // respaldo opcional de compradores (privado)
+  const SITIO = new URL("../", location.href).href;
+  const ESTADOS = [["disponible", "Disponible"], ["apartado", "Apartado"], ["vendido", "Vendido"], ["pausado", "Pausa"]];
+  const K_PEND = "venta-pendientes", K_COMP = "venta-compradores";
+
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = (n) => (n == null || n === "" || isNaN(n) ? "—" : "$" + Math.round(+n).toLocaleString("en-US"));
+  const hoy = () => new Date().toLocaleDateString("en-CA");
+  const nombreE = (e) => ESTADOS.find((x) => x[0] === e)[1];
+  const lee = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+  const guarda = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+
+  let CAT = [], EST = {}, PRE = {};                 // lo publicado
+  let PEND = lee(K_PEND, { estados: {}, precios: {}, enviado: 0 });   // cambios por guardar
+  let COMP = lee(K_COMP, {});                       // compradores: solo en este teléfono
+  let filtro = "todos", busca = "", abierto = null, sondeo = null;
+
+  const pubEstado = (k) => EST[k] || "disponible";
+  const pubPrecio = (a) => (PRE[a.slug] != null ? PRE[a.slug] : a.precio_lista ?? a.precio);
+  const estadoDe = (k) => PEND.estados[k] || pubEstado(k);
+  const precioDe = (a) => (a.slug in PEND.precios ? PEND.precios[a.slug] ?? a.precio_lista : pubPrecio(a));
+  const nPend = () => Object.keys(PEND.estados).length + Object.keys(PEND.precios).length;
+
+  function toast(msg, err) {
+    const t = $("#toast"); t.textContent = msg; t.className = "toast" + (err ? " err" : ""); t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), err ? 7000 : 4000);
+  }
+
+  async function cargar() {
+    const t = Date.now();
+    const j = (f) => fetch(SITIO + f + "?t=" + t, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    const [cat, est, pre] = await Promise.all([j("catalogo.json"), j("estado.json"), j("precios.json")]);
+    if (!cat) throw new Error("sin catálogo");
+    CAT = cat.articulos; EST = (est && est.estados) || {}; PRE = pre || {};
+    limpiarAplicados();
+  }
+
+  // quita de "pendientes" lo que ya está publicado
+  function limpiarAplicados() {
+    for (const [k, e] of Object.entries(PEND.estados)) if (pubEstado(k) === e) delete PEND.estados[k];
+    for (const [k, p] of Object.entries(PEND.precios)) {
+      const a = CAT.find((x) => x.slug === k);
+      if (!a || +pubPrecio(a) === +(p ?? a.precio_lista)) delete PEND.precios[k];
+    }
+    if (!nPend()) PEND.enviado = 0;
+    guarda(K_PEND, PEND);
+  }
+
+  // ---------- render ----------
+  function pintar() {
+    const r = { disponible: 0, apartado: 0, vendido: 0, pausado: 0, cobrado: 0, porCobrar: 0 };
+    for (const a of CAT) {
+      const e = estadoDe(a.slug); r[e]++;
+      for (const v of COMP[a.slug] || []) {
+        const p = +v.precio || 0;
+        if (v.pagado) r.cobrado += p; else if (e === "vendido" || e === "apartado") r.porCobrar += p;
+      }
+    }
+    const q = busca.trim().toLowerCase();
+    const lista = CAT.filter((a) => (filtro === "todos" || estadoDe(a.slug) === filtro || (filtro === "pend" && esPend(a.slug))) &&
+      (!q || a.titulo.toLowerCase().includes(q) || (COMP[a.slug] || []).some((v) => (v.comprador || "").toLowerCase().includes(q))));
+    const chips = [["todos", "Todos"], ["disponible", "Disponibles"], ["apartado", "Apartados"], ["vendido", "Vendidos"], ["pausado", "En pausa"]];
+    $("#app").innerHTML = `
+      <header class="top"><div class="wrap">
+        <div class="fila"><h1>Centro de control</h1><button class="menu" id="bm" aria-label="Menú">☰</button></div>
+        <div class="stats">
+          <div class="stat"><b>${r.disponible}</b><span>Disponibles</span></div>
+          <div class="stat"><b>${r.apartado}</b><span>Apartados</span></div>
+          <div class="stat"><b>${r.vendido}</b><span>Vendidos</span></div>
+          <div class="stat"><b>${r.pausado}</b><span>En pausa</span></div>
+        </div>
+        <div class="dinero"><span>Cobrado: <b>${fmt(r.cobrado)}</b></span>·<span>Por cobrar: <b>${fmt(r.porCobrar)}</b></span></div>
+        <div class="chips">${chips.map(([k, t]) => `<button data-f="${k}" aria-pressed="${filtro === k}">${t}</button>`).join("")}</div>
+        <input type="search" id="q" placeholder="Buscar artículo o comprador" value="${esc(busca)}">
+      </div></header>
+      <main class="wrap"><ul class="lista">${lista.map(fila).join("") || `<li class="vacio">Nada por aquí.</li>`}</ul>
+      <p class="nota">Para guardar cambios necesitas tener tu sesión de GitHub abierta en este teléfono. Los compradores se guardan solo en este teléfono (son privados).</p></main>`;
+    $("#app").querySelectorAll(".chips button").forEach((b) => (b.onclick = () => { filtro = b.dataset.f; pintar(); }));
+    const qi = $("#q");
+    qi.oninput = () => { busca = qi.value; const pos = qi.selectionStart; pintar(); const n = $("#q"); n.focus(); n.setSelectionRange(pos, pos); };
+    $("#bm").onclick = menu;
+    $("#app").querySelectorAll(".it").forEach(conectar);
+    pintarBarra();
+  }
+
+  const esPend = (k) => k in PEND.estados || k in PEND.precios;
+
+  function fila(a) {
+    const e = estadoDe(a.slug), p = precioDe(a);
+    const img = a._img && a._img.length ? `<img src="${SITIO}img/${a._img[0]}-t.jpg" alt="" loading="lazy">` : `<div class="ph"></div>`;
+    const vs = COMP[a.slug] || [];
+    const quien = vs.length ? " · " + vs.map((v) => esc(v.comprador || "sin nombre")).join(", ") : "";
+    const cu = a.por_unidad && a.unidades > 1 ? " c/u" : "";
+    return `<li class="it ${e}${esPend(a.slug) ? " pend" : ""}" data-slug="${esc(a.slug)}">
+      <div class="cab"><div>${img}</div>
+        <div><div class="t">${esc(a.titulo)}</div><div class="p">${fmt(p)}${cu}${quien}</div></div>
+        <div><span class="badge b-${e}">${nombreE(e)}</span>${esPend(a.slug) ? `<span class="badge b-pend">Sin guardar</span>` : ""}</div></div>
+      <div class="seg" role="group" aria-label="Estado">${ESTADOS.map(([k, t]) => `<button type="button" class="${k}" data-e="${k}" aria-pressed="${e === k}">${t}</button>`).join("")}</div>
+      <div class="precio"><span>Precio${cu}</span><input type="number" inputmode="numeric" min="1" data-precio value="${p ?? ""}" placeholder="a consultar">
+        <button type="button" class="mas" data-mas>${abierto === a.slug ? "Cerrar" : vs.length ? "Comprador ▾" : "+ Comprador"}</button></div>
+      ${abierto === a.slug ? detalle(a) : ""}
+    </li>`;
+  }
+
+  function formVenta(a, v, i) {
+    return `<div class="det" data-i="${i}">
+      <label class="campo">Comprador<input name="comprador" value="${esc(v.comprador)}" placeholder="Nombre" autocomplete="off"></label>
+      <div class="dos">
+        <label class="campo">Teléfono<input type="tel" name="telefono" value="${esc(v.telefono)}" placeholder="55 1234 5678"></label>
+        <label class="campo">Precio vendido<input type="number" inputmode="numeric" name="precio" value="${esc(v.precio ?? precioDe(a) ?? "")}"></label>
+      </div>
+      <div class="dos">
+        <label class="campo">Fecha<input type="date" name="fecha" value="${esc(v.fecha || hoy())}"></label>
+        ${a.por_unidad && a.unidades > 1 ? `<label class="campo">Piezas<input type="number" inputmode="numeric" name="cantidad" min="1" max="${a.unidades}" value="${esc(v.cantidad || 1)}"></label>` : "<span></span>"}
+      </div>
+      <label class="campo">Notas<textarea name="notas" rows="2" placeholder="Ej. recoge el sábado, dejó anticipo de $1,000">${esc(v.notas)}</textarea></label>
+      <div class="checks"><label><input type="checkbox" name="pagado" ${v.pagado ? "checked" : ""}> Pagado</label><label><input type="checkbox" name="entregado" ${v.entregado ? "checked" : ""}> Entregado</label></div>
+      <div class="acc">
+        ${v.telefono ? `<a class="b wa" href="https://wa.me/${waNum(v.telefono)}" target="_blank" rel="noopener">WhatsApp</a>` : ""}
+        <button type="button" class="b" data-quitar="${i}">Quitar</button>
+      </div>
+    </div>`;
+  }
+  const waNum = (t) => { const d = String(t).replace(/\D/g, ""); return d.length === 10 ? "52" + d : d; };
+
+  function detalle(a) {
+    const vs = COMP[a.slug] && COMP[a.slug].length ? COMP[a.slug] : [{}];
+    return vs.map((v, i) => formVenta(a, v, i)).join("") + `<div class="det" style="border-top:0;padding-top:0"><div class="acc">
+      <button type="button" class="b prim" data-gcomp>Guardar comprador</button>
+      ${a.por_unidad ? `<button type="button" class="b" data-otro>+ Otro comprador</button>` : ""}
+      <a class="b" href="${SITIO}a/${esc(a.slug)}/" target="_blank" rel="noopener">Ver ↗</a></div></div>`;
+  }
+
+  function leerForms(li) {
+    return [...li.querySelectorAll(".det[data-i]")].map((f) => {
+      const g = (n) => f.querySelector(`[name=${n}]`);
+      const v = { comprador: g("comprador").value.trim(), telefono: g("telefono").value.trim(),
+        precio: g("precio").value === "" ? null : +g("precio").value, fecha: g("fecha").value,
+        notas: g("notas").value.trim(), pagado: g("pagado").checked, entregado: g("entregado").checked };
+      if (g("cantidad")) v.cantidad = +g("cantidad").value || 1;
+      return v;
+    }).filter((v) => v.comprador || v.telefono || v.notas || v.pagado || v.entregado);
+  }
+
+  function conectar(li) {
+    const slug = li.dataset.slug, a = CAT.find((x) => x.slug === slug);
+    li.querySelectorAll(".seg button").forEach((b) => (b.onclick = () => {
+      const e = b.dataset.e;
+      if (e === pubEstado(slug)) delete PEND.estados[slug]; else PEND.estados[slug] = e;
+      if ((e === "vendido" || e === "apartado") && !(COMP[slug] || []).length) abierto = slug;
+      guarda(K_PEND, PEND); pintar();
+    }));
+    const pi = li.querySelector("[data-precio]");
+    pi.onchange = () => {
+      const v = pi.value.trim() === "" ? null : Math.round(+pi.value);
+      if (v != null && !(v > 0)) { toast("Precio no válido", true); return pintar(); }
+      const actual = pubPrecio(a);
+      if ((v ?? a.precio_lista) == actual) delete PEND.precios[slug]; else PEND.precios[slug] = v;
+      guarda(K_PEND, PEND); pintar();
+    };
+    li.querySelector("[data-mas]").onclick = () => { abierto = abierto === slug ? null : slug; pintar(); };
+    const g = li.querySelector("[data-gcomp]");
+    if (g) g.onclick = () => { const vs = leerForms(li); if (vs.length) COMP[slug] = vs; else delete COMP[slug]; guarda(K_COMP, COMP); abierto = null; pintar(); toast("✓ Comprador guardado en este teléfono."); };
+    const o = li.querySelector("[data-otro]");
+    if (o) o.onclick = () => { COMP[slug] = [...leerForms(li), {}]; pintar(); };
+    li.querySelectorAll("[data-quitar]").forEach((b) => (b.onclick = () => {
+      if (!confirm("¿Quitar este comprador?")) return;
+      const vs = leerForms(li); vs.splice(+b.dataset.quitar, 1);
+      if (vs.length) COMP[slug] = vs; else delete COMP[slug];
+      guarda(K_COMP, COMP); pintar();
+    }));
+  }
+
+  // ---------- guardar en GitHub ----------
+  function pintarBarra() {
+    const n = nPend(), b = $("#barra");
+    b.hidden = n === 0;
+    if (!n) return;
+    b.innerHTML = `<div class="wrap"><button class="b azul" id="g">Guardar ${n} ${n === 1 ? "cambio" : "cambios"} en GitHub</button><button class="b" id="d">Descartar</button></div>
+      ${PEND.enviado ? `<div class="wrap espera">⏳ Esperando que GitHub lo aplique… (si no tocaste “Create”/“Submit” en GitHub, vuelve a guardar)</div>` : ""}`;
+    $("#g").onclick = enviar;
+    $("#d").onclick = () => { if (confirm("¿Descartar los cambios sin guardar?")) { PEND = { estados: {}, precios: {}, enviado: 0 }; guarda(K_PEND, PEND); pintar(); } };
+  }
+
+  function enviar() {
+    const t = (k) => (CAT.find((x) => x.slug === k) || { titulo: k }).titulo;
+    const lineas = [
+      ...Object.entries(PEND.estados).map(([k, e]) => `- ${t(k)} → **${nombreE(e)}**`),
+      ...Object.entries(PEND.precios).map(([k, p]) => `- ${t(k)} → precio **${p == null ? "original" : fmt(p)}**`),
+    ];
+    const datos = { estados: PEND.estados, precios: PEND.precios };
+    const resumen = lineas.map((l) => l.replace(/\*\*/g, "").replace(/^- /, "")).slice(0, 3).join(", ");
+    const titulo = `[control] ${resumen}${lineas.length > 3 ? ` y ${lineas.length - 3} más` : ""}`.slice(0, 200);
+    const cuerpo = `Cambios desde el centro de control:\n\n${lineas.join("\n")}\n\n👉 Solo toca el botón verde **Create** / **Submit new issue**. El robot lo aplica en ~1 minuto.\n\n\`\`\`json\n${JSON.stringify(datos)}\n\`\`\`\n`;
+    const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(titulo)}&body=${encodeURIComponent(cuerpo)}`;
+    PEND.enviado = Date.now(); guarda(K_PEND, PEND);
+    window.open(url, "_blank", "noopener");
+    const d = $("#dlg");
+    d.innerHTML = `<h2>Último paso en GitHub</h2><ol>
+      <li>Se abrió GitHub con tus cambios ya escritos.</li>
+      <li>Toca el botón verde <b>Create</b> (o <b>Submit new issue</b>).</li>
+      <li>Regresa aquí: en ~1 minuto te aviso que quedó aplicado.</li></ol>
+      <p class="nota">Si no se abrió o te pide iniciar sesión, entra a GitHub con tu cuenta <b>erickcival</b> y vuelve a tocar “Guardar”.</p>
+      <div class="acc"><a class="b" href="${url}" target="_blank" rel="noopener">Abrir GitHub otra vez</a><button class="b prim" id="ok">Entendido</button></div>`;
+    d.showModal(); $("#ok").onclick = () => d.close();
+    vigilar(); pintar();
+  }
+
+  function vigilar() {
+    clearInterval(sondeo);
+    const inicio = Date.now();
+    sondeo = setInterval(async () => {
+      if (!PEND.enviado) return clearInterval(sondeo);
+      try { await cargar(); } catch (e) { return; }
+      if (!nPend()) { clearInterval(sondeo); pintar(); toast("✓ Cambios aplicados en la página. El PDF se actualiza en ~1 minuto más."); }
+      else if (Date.now() - inicio > 6 * 60e3) { clearInterval(sondeo); PEND.enviado = 0; guarda(K_PEND, PEND); pintar(); toast("No vi los cambios aplicados. ¿Tocaste “Create” en GitHub? Vuelve a guardar.", true); }
+    }, 12000);
+  }
+
+  // ---------- menú ----------
+  function exportarCSV() {
+    const filas = [["Artículo", "Estado", "Precio", "Comprador", "Teléfono", "Precio vendido", "Piezas", "Fecha", "Pagado", "Entregado", "Notas"]];
+    for (const a of CAT) {
+      const vs = COMP[a.slug] || [];
+      if (!vs.length) filas.push([a.titulo, nombreE(estadoDe(a.slug)), precioDe(a) ?? "", "", "", "", "", "", "", "", ""]);
+      for (const v of vs) filas.push([a.titulo, nombreE(estadoDe(a.slug)), precioDe(a) ?? "", v.comprador, v.telefono, v.precio ?? "", v.cantidad || 1, v.fecha, v.pagado ? "sí" : "no", v.entregado ? "sí" : "no", v.notas]);
+    }
+    const csv = "﻿" + filas.map((f) => f.map((c) => `"${String(c ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+    const u = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const l = document.createElement("a"); l.href = u; l.download = `ventas-mudanza-${hoy()}.csv`; l.click();
+    setTimeout(() => URL.revokeObjectURL(u), 2000);
+  }
+
+  function respaldar() {
+    const filas = [];
+    for (const a of CAT) for (const v of COMP[a.slug] || [])
+      filas.push(`| ${a.titulo} | ${nombreE(estadoDe(a.slug))} | ${v.comprador || ""} | ${v.telefono || ""} | ${fmt(v.precio)} | ${v.pagado ? "sí" : "no"} | ${v.entregado ? "sí" : "no"} | ${(v.notas || "").replace(/\|/g, "/").replace(/\n/g, " ")} |`);
+    if (!filas.length) return toast("Todavía no hay compradores que respaldar.");
+    const cuerpo = `Respaldo de compradores (${hoy()}). Repositorio privado: solo tú lo ves.\n\n| Artículo | Estado | Comprador | Teléfono | Precio | Pagado | Entregado | Notas |\n|---|---|---|---|---|---|---|---|\n${filas.join("\n")}\n\n<details><summary>Datos para restaurar</summary>\n\n\`\`\`json\n${JSON.stringify(COMP)}\n\`\`\`\n</details>\n`;
+    window.open(`https://github.com/${PRIV}/issues/new?title=${encodeURIComponent("Respaldo compradores " + hoy())}&body=${encodeURIComponent(cuerpo)}`, "_blank", "noopener");
+  }
+
+  function restaurar() {
+    const t = prompt("Pega aquí el bloque de “Datos para restaurar” de tu respaldo en GitHub:");
+    if (!t) return;
+    try {
+      const m = t.match(/\{[\s\S]*\}/); const d = JSON.parse(m ? m[0] : t);
+      if (typeof d !== "object") throw 0;
+      COMP = { ...COMP, ...d }; guarda(K_COMP, COMP); pintar(); toast("✓ Compradores restaurados.");
+    } catch (e) { toast("Ese texto no es un respaldo válido.", true); }
+  }
+
+  function menu() {
+    const d = $("#dlg");
+    d.innerHTML = `<h2>Menú</h2><div class="acc">
+      <a class="b" href="${SITIO}" target="_blank" rel="noopener">Ver página pública ↗</a>
+      <button class="b" id="m-csv">Descargar ventas (Excel)</button>
+      <button class="b" id="m-bak">Respaldar compradores en GitHub (privado)</button>
+      <button class="b" id="m-res">Restaurar compradores de un respaldo</button>
+      <button class="b" id="m-rel">Recargar</button>
+      <button class="b prim" id="m-x">Cerrar</button></div>
+      <p class="nota">Los compradores viven solo en este teléfono. Respáldalos de vez en cuando: queda en tu repositorio privado de GitHub.</p>`;
+    d.showModal();
+    $("#m-x").onclick = () => d.close();
+    $("#m-csv").onclick = () => { exportarCSV(); d.close(); };
+    $("#m-bak").onclick = () => { respaldar(); d.close(); };
+    $("#m-res").onclick = () => { d.close(); restaurar(); };
+    $("#m-rel").onclick = async () => { d.close(); await cargar(); pintar(); };
+    d.onclick = (ev) => { if (ev.target === d) d.close(); };
+  }
+
+  cargar().then(() => { pintar(); if (PEND.enviado && nPend()) vigilar(); })
+    .catch(() => ($("#app").innerHTML = `<div class="wrap vacio">No se pudo cargar. Revisa tu internet.<br><br><button class="b" onclick="location.reload()">Reintentar</button></div>`));
+  // al volver de GitHub, revisar de inmediato
+  document.addEventListener("visibilitychange", async () => {
+    if (document.visibilityState === "visible" && PEND.enviado) { try { await cargar(); pintar(); } catch (e) {} }
+  });
+})();
+</script>
+</body>
+</html>

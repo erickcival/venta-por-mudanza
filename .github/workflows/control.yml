@@ -1,0 +1,57 @@
+# Centro de control: el usuario abre un issue "[control] ..." desde /control/ y este robot lo aplica.
+# Solo cuentan los issues del dueño del repo (o colaboradores); los demás se cierran sin cambios.
+name: Centro de control
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: control
+  cancel-in-progress: false
+jobs:
+  aplicar:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[control]')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      N: ${{ github.event.issue.number }}
+      RESUMEN: /tmp/resumen.md
+    steps:
+      - name: Solo el dueño puede hacer cambios
+        if: github.event_name == 'issues' && !contains(fromJSON('["OWNER","COLLABORATOR","MEMBER"]'), github.event.issue.author_association)
+        run: |
+          gh issue close "$N" -R "$GITHUB_REPOSITORY" -c "Solo el dueño de la venta puede hacer cambios desde el centro de control."
+          exit 1
+      - uses: actions/checkout@v4
+      - name: Aplicar cambios
+        if: github.event_name == 'issues'
+        run: python3 tools/control_robot.py
+      - name: Publicar estado y precios
+        if: github.event_name == 'issues'
+        run: |
+          git config user.name "venta-bot"
+          git config user.email "venta-bot@users.noreply.github.com"
+          git add estado.json precios.json
+          git diff --cached --quiet || git commit -q -m "Control #$N"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+          gh issue close "$N" -R "$GITHUB_REPOSITORY" -c "$(cat $RESUMEN)"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q qrcode pillow && sudo apt-get install -y -qq fonts-noto-color-emoji >/dev/null
+      - name: Regenerar PDF
+        run: |
+          git pull -q --rebase
+          python tools/build.py --ci . --forzar
+          git add catalogo.pdf pdf.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "PDF regenerado"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep 5; done
+          exit 1
+      - name: Avisar si falló
+        if: failure() && github.event_name == 'issues'
+        run: |
+          gh issue comment "$N" -R "$GITHUB_REPOSITORY" -b "⚠️ Algo falló al aplicar este cambio: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" || true
