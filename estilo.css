@@ -30,6 +30,8 @@ footer{padding-bottom:96px!important}
 .sello{position:absolute;top:12px;left:12px;background:var(--sold);color:#fff;font-weight:800;letter-spacing:.1em;font-size:13px;padding:5px 10px;border-radius:6px;transform:rotate(-4deg)}
 .sello.apartado{background:#b8860b}
 .card.vendido a.foto img{filter:grayscale(1) opacity(.6)}
+[hidden]{display:none!important}
+.aviso{background:var(--line);border-radius:10px;padding:10px 12px;font-weight:600;margin:0 0 10px}
 .sinfoto{display:grid;place-items:center;height:100%;color:var(--muted);font-size:14px}
 .ocultar-vendidos .card.vendido{display:none}
 label.toggle{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);flex:none;padding-left:4px}

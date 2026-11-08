@@ -1,0 +1,12 @@
+{
+  "estados": {
+    "sillas-comedor": "vendido",
+    "tv-the-frame-55": "vendido",
+    "cafetera-nespresso": "vendido",
+    "mueble-tv": "vendido",
+    "tapete-gris-rombos": "pausado",
+    "tv-samsung-65": "pausado",
+    "cama-mascota": "pausado",
+    "air-fryer-ninja": "pausado"
+  }
+}

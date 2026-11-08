@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#1f1b16">
+<title>Centro de control</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎛️</text></svg>">
+<style>
+:root{--bg:#f6f1ea;--card:#fffdf9;--ink:#1f1b16;--muted:#6f655a;--line:#e4dacd;--accent:#b4532a;--ok:#1f7a4d;--warn:#b8860b;--sold:#8b2c1d;--pause:#5b6470;--wa:#1f8f4e}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17140f;--card:#211d17;--ink:#f3ece2;--muted:#b3a796;--line:#3a332a;--accent:#e07a4b;--ok:#3fbf80;--warn:#e0b040;--sold:#e0705b;--pause:#9aa3ad;--wa:#2fae66}}
+:root[data-theme=dark]{--bg:#17140f;--card:#211d17;--ink:#f3ece2;--muted:#b3a796;--line:#3a332a;--accent:#e07a4b;--ok:#3fbf80;--warn:#e0b040;--sold:#e0705b;--pause:#9aa3ad;--wa:#2fae66}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0 10px}
+.fila{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.menu{font:inherit;font-size:22px;background:none;border:0;color:var(--ink);padding:4px 8px;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center}
+.stat b{display:block;font-size:20px;line-height:1.1}.stat span{font-size:11px;color:var(--muted)}
+.dinero{display:flex;gap:6px;margin-top:6px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.dinero b{color:var(--ink)}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+.chips button{flex:none;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+input[type=search],input[type=text],input[type=tel],input[type=number],input[type=date],input[type=password],textarea{font:inherit;font-size:16px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+input[type=search]{margin-top:10px}
+ul.lista{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.it{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.it.pausado{opacity:.75}
+.cab{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:10px 12px;cursor:pointer}
+.cab img,.cab .ph{width:56px;height:56px;border-radius:8px;object-fit:cover;background:var(--line)}
+.cab .t{font-weight:600;font-size:15px;line-height:1.2}
+.cab .p{font-size:13px;color:var(--muted)}
+.badge{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 7px;color:#fff;white-space:nowrap}
+.b-disponible{background:var(--ok)}.b-apartado{background:var(--warn)}.b-vendido{background:var(--sold)}.b-pausado{background:var(--pause)}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0 12px 10px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;font-weight:600;padding:10px 2px;border:0;border-right:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true].disponible{background:var(--ok);color:#fff}
+.seg button[aria-pressed=true].apartado{background:var(--warn);color:#fff}
+.seg button[aria-pressed=true].vendido{background:var(--sold);color:#fff}
+.seg button[aria-pressed=true].pausado{background:var(--pause);color:#fff}
+.det{border-top:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:12px}
+.venta{border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:8px}
+.venta .dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+label.campo{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.checks{display:flex;gap:16px;font-size:15px}
+.checks label{display:flex;align-items:center;gap:6px}
+.checks input{width:20px;height:20px}
+.acc{display:flex;gap:8px;flex-wrap:wrap}
+.b{font:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:10px 14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.b.prim{background:var(--ink);color:var(--bg)}
+.b.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.b.peligro{border-color:var(--sold);color:var(--sold)}
+.b:disabled{opacity:.5}
+.vacio{padding:30px 0;text-align:center;color:var(--muted)}
+.toast{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:560px;margin:0 auto}
+.toast.err{background:var(--sold);color:#fff}
+.setup{padding:24px 0 40px}
+.setup h1{font-size:28px;margin-bottom:6px}
+.setup ol{padding-left:20px}.setup li{margin:8px 0}
+.setup code{background:var(--line);border-radius:5px;padding:1px 5px;font-size:14px}
+.nota{font-size:13px;color:var(--muted)}
+dialog{border:0;border-radius:16px;padding:18px;width:min(460px,calc(100% - 24px));background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog .acc{flex-direction:column}dialog .b{justify-content:center}
+.sync{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<dialog id="menu"></dialog>
+
+<script>
+(() => {
+  const OWNER = "erickcival";
+  const PUB = "venta-por-mudanza";            // repo público: estado.json (solo el estado, sin datos personales)
+  const PRIV = "venta-por-mudanza-privado";   // repo privado: ventas.json (compradores, teléfonos, cobros)
+  const SITIO = new URL("../", location.href).href; // raíz del sitio público (funciona en GitHub Pages y en local)
+  const ESTADOS = [["disponible", "Disponible"], ["apartado", "Apartado"], ["vendido", "Vendido"], ["pausado", "Pausa"]];
+  const TKEY = "venta-control-token";
+
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = (n) => (n == null || n === "" || isNaN(n) ? "—" : "$" + Math.round(+n).toLocaleString("en-US"));
+  const hoy = () => new Date().toLocaleDateString("en-CA");
+  const app = $("#app");
+
+  // ---------- acceso ----------
+  let TOKEN = null;
+  const m = location.hash.match(/[#&]t=([^&]+)/);
+  if (m) {
+    TOKEN = decodeURIComponent(m[1]);
+    try { localStorage.setItem(TKEY, TOKEN); } catch (e) {}
+    history.replaceState(null, "", location.pathname); // saca el token de la barra de direcciones
+  } else {
+    try { TOKEN = localStorage.getItem(TKEY); } catch (e) {}
+  }
+
+  // ---------- GitHub ----------
+  const b64enc = (str) => { const b = new TextEncoder().encode(str); let s = ""; b.forEach((x) => (s += String.fromCharCode(x))); return btoa(s); };
+  const b64dec = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\n/g, "")), (c) => c.charCodeAt(0)));
+
+  async function gh(path, opts = {}) {
+    const r = await fetch("https://api.github.com" + path, {
+      ...opts,
+      cache: "no-store",
+      headers: { Authorization: "Bearer " + TOKEN, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(opts.headers || {}) },
+    });
+    if (!r.ok) { const e = new Error("GitHub " + r.status); e.status = r.status; e.body = await r.text().catch(() => ""); throw e; }
+    return r.status === 204 ? null : r.json();
+  }
+  async function leerArchivo(repo, file, vacio) {
+    try {
+      const j = await gh(`/repos/${OWNER}/${repo}/contents/${file}?ref=main`);
+      return { data: JSON.parse(b64dec(j.content)), sha: j.sha };
+    } catch (e) {
+      if (e.status === 404) return { data: vacio, sha: null };
+      throw e;
+    }
+  }
+  // Escribe con reintento: si alguien más guardó antes (sha distinto), relee, vuelve a aplicar el cambio y guarda.
+  async function escribir(repo, file, vacio, mutar, mensaje) {
+    for (let i = 0; i < 4; i++) {
+      const cur = await leerArchivo(repo, file, vacio);
+      const data = mutar(structuredClone(cur.data));
+      const body = { message: mensaje, content: b64enc(JSON.stringify(data, null, 2) + "\n"), branch: "main" };
+      if (cur.sha) body.sha = cur.sha;
+      try {
+        await gh(`/repos/${OWNER}/${repo}/contents/${file}`, { method: "PUT", body: JSON.stringify(body) });
+        return data;
+      } catch (e) {
+        if (e.status !== 409 && e.status !== 422) throw e;
+        await new Promise((r) => setTimeout(r, 400 * (i + 1)));
+      }
+    }
+    throw new Error("No se pudo guardar después de varios intentos");
+  }
+  // una escritura a la vez
+  let cola = Promise.resolve();
+  const enCola = (fn) => (cola = cola.then(fn, fn));
+
+  // ---------- estado de la app ----------
+  let CAT = null, EST = { estados: {} }, VEN = { ventas: {} };
+  let filtro = "todos", busca = "", abierto = null;
+  const estadoDe = (slug) => EST.estados[slug] || "disponible";
+  const ventasDe = (slug) => VEN.ventas[slug] || [];
+
+  function toast(msg, err) {
+    const t = $("#toast");
+    t.textContent = msg; t.className = "toast" + (err ? " err" : ""); t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), err ? 6000 : 3500);
+  }
+  function errorMsg(e) {
+    if (e.status === 401) return "El token ya no es válido (venció o se borró). Abre el menú ☰ y vuelve a conectar.";
+    if (e.status === 403 || e.status === 404) return "El token no tiene permiso sobre los dos repositorios. Revisa el paso 4 de la configuración.";
+    if (!navigator.onLine) return "Sin internet. Intenta de nuevo.";
+    return "No se pudo guardar: " + (e.message || e);
+  }
+
+  // ---------- pantalla de configuración ----------
+  function pantallaSetup(msg) {
+    app.innerHTML = `<div class="wrap setup">
+      <h1>Centro de control</h1>
+      <p class="nota">Venta por mudanza · solo para ti y quien tenga tu link de acceso.</p>
+      ${msg ? `<p class="toast err" style="position:static">${esc(msg)}</p>` : ""}
+      <p>Para cambiar artículos desde aquí necesitas una <b>llave de GitHub</b> (se hace una sola vez, ~3 min):</p>
+      <ol>
+        <li>Abre <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"><b>Crear llave en GitHub</b></a> (inicia sesión como <code>${OWNER}</code>).</li>
+        <li><b>Token name:</b> <code>Venta control</code>. <b>Expiration:</b> 90 días.</li>
+        <li><b>Repository access:</b> “Only select repositories” → elige <code>${PUB}</code> y <code>${PRIV}</code>.</li>
+        <li><b>Permissions → Repositories → Contents:</b> “Read and write”. Nada más.</li>
+        <li>Toca <b>Generate token</b>, copia el código (empieza con <code>github_pat_</code>) y pégalo aquí:</li>
+      </ol>
+      <form id="f" style="display:grid;gap:10px">
+        <input type="password" id="tk" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+        <button class="b prim" type="submit">Conectar</button>
+      </form>
+      <p class="nota">La llave se guarda solo en este teléfono. Después podrás mandar un link de acceso a quien te ayude con la venta.</p>
+    </div>`;
+    $("#f").onsubmit = async (ev) => {
+      ev.preventDefault();
+      TOKEN = $("#tk").value.trim();
+      try { localStorage.setItem(TKEY, TOKEN); } catch (e) {}
+      iniciar();
+    };
+  }
+
+  // ---------- carga ----------
+  async function iniciar() {
+    if (!TOKEN) return pantallaSetup();
+    app.innerHTML = `<div class="wrap vacio">Cargando…</div>`;
+    try {
+      const [cat, est, ven] = await Promise.all([
+        fetch(SITIO + "catalogo.json?t=" + Date.now(), { cache: "no-store" }).then((r) => r.json()),
+        leerArchivo(PUB, "estado.json", { estados: {} }),
+        leerArchivo(PRIV, "ventas.json", { ventas: {} }),
+      ]);
+      CAT = cat; EST = est.data; VEN = ven.data;
+      EST.estados = EST.estados || {}; VEN.ventas = VEN.ventas || {};
+      pintar();
+    } catch (e) {
+      if (e.status === 401 || e.status === 403 || e.status === 404) {
+        try { localStorage.removeItem(TKEY); } catch (x) {}
+        TOKEN = null;
+        return pantallaSetup(errorMsg(e));
+      }
+      app.innerHTML = `<div class="wrap vacio">No se pudo cargar (${esc(e.message)}).<br><br><button class="b" onclick="location.reload()">Reintentar</button></div>`;
+    }
+  }
+
+  // ---------- render ----------
+  function resumen() {
+    const r = { disponible: 0, apartado: 0, vendido: 0, pausado: 0, cobrado: 0, porCobrar: 0 };
+    for (const a of CAT.articulos) {
+      r[estadoDe(a.slug)]++;
+      for (const v of ventasDe(a.slug)) {
+        const p = +v.precio || 0;
+        if (v.pagado) r.cobrado += p; else if (["vendido", "apartado"].includes(estadoDe(a.slug))) r.porCobrar += p;
+      }
+    }
+    return r;
+  }
+
+  function pintar() {
+    const r = resumen();
+    const chips = [["todos", "Todos"], ["disponible", "Disponibles"], ["apartado", "Apartados"], ["vendido", "Vendidos"], ["pausado", "En pausa"]];
+    const q = busca.trim().toLowerCase();
+    const lista = CAT.articulos.filter((a) => (filtro === "todos" || estadoDe(a.slug) === filtro) &&
+      (!q || a.titulo.toLowerCase().includes(q) || ventasDe(a.slug).some((v) => (v.comprador || "").toLowerCase().includes(q))));
+    app.innerHTML = `
+      <header class="top"><div class="wrap">
+        <div class="fila"><h1>Centro de control</h1><button class="menu" id="bm" aria-label="Menú">☰</button></div>
+        <div class="stats">
+          <div class="stat"><b>${r.disponible}</b><span>Disponibles</span></div>
+          <div class="stat"><b>${r.apartado}</b><span>Apartados</span></div>
+          <div class="stat"><b>${r.vendido}</b><span>Vendidos</span></div>
+          <div class="stat"><b>${r.pausado}</b><span>En pausa</span></div>
+        </div>
+        <div class="dinero"><span>Cobrado: <b>${fmt(r.cobrado)}</b></span>·<span>Por cobrar: <b>${fmt(r.porCobrar)}</b></span></div>
+        <div class="chips">${chips.map(([k, t]) => `<button data-f="${k}" aria-pressed="${filtro === k}">${t}</button>`).join("")}</div>
+        <input type="search" id="q" placeholder="Buscar artículo o comprador" value="${esc(busca)}">
+      </div></header>
+      <main class="wrap"><ul class="lista">${lista.map(fila).join("") || `<li class="vacio">Nada por aquí.</li>`}</ul>
+      <p class="sync">Los cambios se publican al instante; la página pública tarda ~1 minuto en reflejarlos y el PDF ~2 minutos.</p></main>`;
+    app.querySelectorAll(".chips button").forEach((b) => (b.onclick = () => { filtro = b.dataset.f; pintar(); }));
+    const qi = $("#q");
+    qi.oninput = () => { busca = qi.value; const pos = qi.selectionStart; pintar(); const n = $("#q"); n.focus(); n.setSelectionRange(pos, pos); };
+    $("#bm").onclick = abrirMenu;
+    app.querySelectorAll(".it").forEach(conectarFila);
+  }
+
+  function fila(a) {
+    const e = estadoDe(a.slug);
+    const img = a._img && a._img.length ? `<img src="${SITIO}img/${a._img[0]}-t.jpg" alt="" loading="lazy">` : `<div class="ph"></div>`;
+    const vs = ventasDe(a.slug);
+    const quien = vs.length ? " · " + vs.map((v) => esc(v.comprador || "sin nombre")).join(", ") : "";
+    const unid = a.por_unidad && a.unidades > 1 ? ` (${a.unidades} pzas, c/u)` : "";
+    return `<li class="it ${e}" data-slug="${esc(a.slug)}">
+      <div class="cab"><div>${img}</div>
+        <div><div class="t">${esc(a.titulo)}</div><div class="p">${fmt(a.precio)}${unid}${quien}</div></div>
+        <span class="badge b-${e}">${ESTADOS.find((x) => x[0] === e)[1]}</span></div>
+      <div class="seg" role="group" aria-label="Estado">${ESTADOS.map(([k, t]) => `<button type="button" class="${k}" data-e="${k}" aria-pressed="${e === k}">${t}</button>`).join("")}</div>
+      ${abierto === a.slug ? detalle(a) : ""}
+    </li>`;
+  }
+
+  function formVenta(a, v, i) {
+    return `<div class="venta" data-i="${i}">
+      <label class="campo">Comprador<input type="text" name="comprador" value="${esc(v.comprador)}" placeholder="Nombre" autocomplete="off"></label>
+      <div class="dos">
+        <label class="campo">Teléfono<input type="tel" name="telefono" value="${esc(v.telefono)}" placeholder="55 1234 5678"></label>
+        <label class="campo">Precio de venta<input type="number" inputmode="numeric" name="precio" value="${esc(v.precio ?? a.precio ?? "")}"></label>
+      </div>
+      <div class="dos">
+        <label class="campo">Fecha<input type="date" name="fecha" value="${esc(v.fecha || hoy())}"></label>
+        ${a.por_unidad && a.unidades > 1 ? `<label class="campo">Piezas<input type="number" inputmode="numeric" name="cantidad" min="1" max="${a.unidades}" value="${esc(v.cantidad || 1)}"></label>` : "<span></span>"}
+      </div>
+      <label class="campo">Notas<textarea name="notas" rows="2" placeholder="Ej. recoge el sábado, pagó anticipo de $1,000">${esc(v.notas)}</textarea></label>
+      <div class="checks"><label><input type="checkbox" name="pagado" ${v.pagado ? "checked" : ""}> Pagado</label><label><input type="checkbox" name="entregado" ${v.entregado ? "checked" : ""}> Entregado</label></div>
+      <div class="acc">
+        ${v.telefono ? `<a class="b wa" href="https://wa.me/${waNum(v.telefono)}" target="_blank" rel="noopener">WhatsApp</a>` : ""}
+        <button type="button" class="b peligro" data-borrar="${i}">Quitar comprador</button>
+      </div>
+    </div>`;
+  }
+  const waNum = (t) => { const d = String(t).replace(/\D/g, ""); return d.length === 10 ? "52" + d : d; };
+
+  function detalle(a) {
+    const vs = ventasDe(a.slug);
+    const lista = vs.length ? vs : [{}];
+    return `<div class="det">
+      <div class="nota">¿A quién se lo vendiste o apartaste? (privado, nadie más lo ve)</div>
+      ${lista.map((v, i) => formVenta(a, v, i)).join("")}
+      <div class="acc">
+        <button type="button" class="b prim" data-guardar>Guardar</button>
+        ${a.por_unidad || vs.length ? `<button type="button" class="b" data-otro>+ Otro comprador</button>` : ""}
+        <a class="b" href="${SITIO}a/${esc(a.slug)}/" target="_blank" rel="noopener">Ver en la página ↗</a>
+      </div>
+    </div>`;
+  }
+
+  function leerForms(li) {
+    return [...li.querySelectorAll(".venta")].map((f) => {
+      const g = (n) => f.querySelector(`[name=${n}]`);
+      const v = {
+        comprador: g("comprador").value.trim(), telefono: g("telefono").value.trim(),
+        precio: g("precio").value === "" ? null : +g("precio").value, fecha: g("fecha").value,
+        notas: g("notas").value.trim(), pagado: g("pagado").checked, entregado: g("entregado").checked,
+      };
+      if (g("cantidad")) v.cantidad = +g("cantidad").value || 1;
+      return v;
+    }).filter((v) => v.comprador || v.telefono || v.notas || v.pagado || v.entregado);
+  }
+
+  function conectarFila(li) {
+    const slug = li.dataset.slug;
+    const a = CAT.articulos.find((x) => x.slug === slug);
+    li.querySelector(".cab").onclick = () => { abierto = abierto === slug ? null : slug; pintar(); };
+    li.querySelectorAll(".seg button").forEach((b) => (b.onclick = () => cambiarEstado(a, b.dataset.e)));
+    const g = li.querySelector("[data-guardar]");
+    if (g) g.onclick = () => guardarVentas(a, leerForms(li));
+    const o = li.querySelector("[data-otro]");
+    if (o) o.onclick = () => { VEN.ventas[slug] = [...leerForms(li), {}]; pintar(); };
+    li.querySelectorAll("[data-borrar]").forEach((b) => (b.onclick = () => {
+      const vs = leerForms(li); vs.splice(+b.dataset.borrar, 1);
+      if (confirm("¿Quitar este comprador?")) guardarVentas(a, vs);
+    }));
+  }
+
+  // ---------- acciones ----------
+  function cambiarEstado(a, nuevo) {
+    const antes = estadoDe(a.slug);
+    if (antes === nuevo) return;
+    EST.estados[a.slug] = nuevo;                   // optimista
+    if (nuevo === "vendido" || nuevo === "apartado") abierto = a.slug;
+    pintar();
+    enCola(async () => {
+      try {
+        EST = await escribir(PUB, "estado.json", { estados: {} }, (d) => {
+          d.estados = d.estados || {};
+          if (nuevo === "disponible") delete d.estados[a.slug]; else d.estados[a.slug] = nuevo;
+          return d;
+        }, `${nuevo}: ${a.titulo}`);
+        toast(`✓ ${a.titulo}: ${ESTADOS.find((x) => x[0] === nuevo)[1]}. La página se actualiza en ~1 min.`);
+      } catch (e) {
+        EST.estados[a.slug] = antes; pintar(); toast(errorMsg(e), true);
+      }
+    });
+  }
+
+  function guardarVentas(a, vs) {
+    const btn = document.querySelector(`.it[data-slug="${a.slug}"] [data-guardar]`);
+    if (btn) { btn.disabled = true; btn.textContent = "Guardando…"; }
+    enCola(async () => {
+      try {
+        VEN = await escribir(PRIV, "ventas.json", { ventas: {} }, (d) => {
+          d.ventas = d.ventas || {};
+          if (vs.length) d.ventas[a.slug] = vs; else delete d.ventas[a.slug];
+          return d;
+        }, `Venta: ${a.slug}`);
+        abierto = vs.length ? a.slug : null;
+        pintar(); toast("✓ Comprador guardado (privado).");
+      } catch (e) {
+        if (btn) { btn.disabled = false; btn.textContent = "Guardar"; }
+        toast(errorMsg(e), true);
+      }
+    });
+  }
+
+  function exportarCSV() {
+    const filas = [["Artículo", "Estado", "Precio lista", "Comprador", "Teléfono", "Precio venta", "Piezas", "Fecha", "Pagado", "Entregado", "Notas"]];
+    for (const a of CAT.articulos) {
+      const vs = ventasDe(a.slug);
+      if (!vs.length) filas.push([a.titulo, estadoDe(a.slug), a.precio ?? "", "", "", "", "", "", "", "", ""]);
+      for (const v of vs) filas.push([a.titulo, estadoDe(a.slug), a.precio ?? "", v.comprador, v.telefono, v.precio ?? "", v.cantidad || 1, v.fecha, v.pagado ? "sí" : "no", v.entregado ? "sí" : "no", v.notas]);
+    }
+    const csv = "﻿" + filas.map((f) => f.map((c) => `"${String(c ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const l = document.createElement("a"); l.href = url; l.download = `ventas-mudanza-${hoy()}.csv`; l.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  function abrirMenu() {
+    const d = $("#menu");
+    d.innerHTML = `<h2 style="margin:0 0 12px;font-size:20px">Menú</h2><div class="acc">
+      <a class="b" href="${SITIO}" target="_blank" rel="noopener">Ver página pública ↗</a>
+      <button class="b" id="m-share">Copiar link de acceso</button>
+      <button class="b" id="m-csv">Descargar ventas (Excel/CSV)</button>
+      <button class="b" id="m-rel">Recargar datos</button>
+      <button class="b peligro" id="m-out">Desconectar este teléfono</button>
+      <button class="b prim" id="m-x">Cerrar</button></div>
+      <p class="nota">El link de acceso incluye tu llave: quien lo tenga puede cambiar estados y ver compradores. Compártelo solo con quien te ayude con la venta.</p>`;
+    d.showModal();
+    $("#m-x").onclick = () => d.close();
+    $("#m-rel").onclick = () => { d.close(); iniciar(); };
+    $("#m-csv").onclick = () => { exportarCSV(); d.close(); };
+    $("#m-out").onclick = () => {
+      if (!confirm("¿Desconectar? Tendrás que volver a pegar la llave o abrir tu link de acceso.")) return;
+      try { localStorage.removeItem(TKEY); } catch (e) {}
+      TOKEN = null; d.close(); pantallaSetup();
+    };
+    $("#m-share").onclick = async () => {
+      const link = location.origin + location.pathname + "#t=" + encodeURIComponent(TOKEN);
+      try { await navigator.clipboard.writeText(link); toast("✓ Link copiado. Pégalo en WhatsApp a quien te ayude."); }
+      catch (e) { prompt("Copia este link:", link); }
+      d.close();
+    };
+    d.onclick = (ev) => { if (ev.target === d) d.close(); };
+  }
+
+  iniciar();
+})();
+</script>
+</body>
+</html>

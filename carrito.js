@@ -8,10 +8,15 @@
   const corto = (t) => t.replace(/\s*\([^)]*disponibles?\)\s*$/i, "");
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  // estado en vivo (lo edita el centro de control): disponible / apartado / vendido / pausado
+  let ESTADOS = {};
+  const estadoDe = (k) => ESTADOS[k] || "disponible";
+  const vendible = (k) => V.items[k] && ["disponible", "apartado"].includes(estadoDe(k));
+
   let mem = {};
   const leer = () => {
     try { mem = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) {}
-    for (const k of Object.keys(mem)) if (!V.items[k]) delete mem[k]; // vendidos o eliminados
+    for (const k of Object.keys(mem)) if (!vendible(k)) delete mem[k]; // vendidos, pausados o eliminados
     return mem;
   };
   const guardar = () => { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) {} };
@@ -93,15 +98,74 @@
     });
   }
 
+  // ---- aplicar estado en vivo a la página ----
+  const WA_SVG = (document.querySelector("a.btn svg") || {}).outerHTML || "";
+  function aplicarEstado() {
+    document.querySelectorAll(".card[data-slug], .panel[data-slug]").forEach((el) => {
+      const e = estadoDe(el.dataset.slug);
+      if (el.classList.contains("card")) {
+        el.classList.remove("disponible", "apartado", "vendido", "pausado");
+        el.classList.add(e);
+        el.hidden = e === "pausado";
+      }
+      let s = el.querySelector(":scope > .sello");
+      if (e === "vendido" || e === "apartado") {
+        if (!s) { s = document.createElement("span"); el.prepend(s); }
+        s.className = "sello " + e;
+        s.textContent = e === "vendido" ? "VENDIDO" : "APARTADO";
+      } else if (s) s.remove();
+      const av = el.querySelector(".aviso");
+      if (av) av.hidden = e !== "pausado";
+    });
+    document.querySelectorAll(".acciones").forEach((ac) => {
+      const host = ac.closest("[data-slug]");
+      if (!host) return;
+      const e = estadoDe(host.dataset.slug);
+      const apagado = e === "vendido" || e === "pausado";
+      const viejo = ac.querySelector(".btn");
+      let nuevo;
+      if (apagado || !ac.dataset.wa) {
+        nuevo = document.createElement("span");
+        nuevo.className = "btn"; nuevo.setAttribute("aria-disabled", "true");
+        nuevo.textContent = e === "vendido" ? "Vendido" : e === "pausado" ? "No disponible" : "Contacto próximamente";
+      } else {
+        nuevo = document.createElement("a");
+        nuevo.className = "btn"; nuevo.href = ac.dataset.wa; nuevo.target = "_blank"; nuevo.rel = "noopener";
+        nuevo.innerHTML = WA_SVG + " Lo quiero";
+      }
+      if (viejo) viejo.replaceWith(nuevo);
+      const add = ac.querySelector("[data-add]");
+      if (add) add.hidden = apagado;
+    });
+    const nd = document.getElementById("ndisp");
+    if (nd) nd.textContent = Object.keys(V.items).filter(vendible).length;
+  }
+
+  function cargarEstado() {
+    const t = Date.now();
+    fetch(BASE + "estado.json?t=" + t, { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => { if (j) { ESTADOS = j.estados || {}; aplicarEstado(); leer(); cambio(); } })
+      .catch(() => {});
+    fetch(BASE + "pdf.json?t=" + t, { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (j && j.v) document.querySelectorAll('a[href^="' + BASE + 'catalogo.pdf"], a[href^="catalogo.pdf"]')
+          .forEach((a) => (a.href = BASE + "catalogo.pdf?v=" + j.v));
+      })
+      .catch(() => {});
+  }
+
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-add]");
     if (!b) return;
     const k = b.dataset.add;
-    if (!V.items[k]) return;
+    if (!vendible(k)) return;
     if (mem[k]) delete mem[k]; else mem[k] = 1;
     cambio();
   });
   window.addEventListener("storage", () => { leer(); cambio(); }); // sincroniza entre pestañas
   window.addEventListener("pageshow", () => { leer(); cambio(); }); // al volver con "atrás"
   cambio();
+  cargarEstado();
 })();

@@ -1,0 +1,492 @@
+{
+ "config": {
+  "titulo": "Venta por mudanza",
+  "url": "https://erickcival.github.io/venta-por-mudanza/",
+  "whatsapp": "+52 55 2422 9718",
+  "zona": "Anzures, CDMX",
+  "fecha_limite": "",
+  "entrega": "Se entrega en Anzures",
+  "moneda": "MXN",
+  "nota_precios": "Precios negociables"
+ },
+ "categorias": [
+  "Sala",
+  "Comedor",
+  "Recámara",
+  "Electrónica",
+  "Electrodomésticos",
+  "Cocina",
+  "Oficina",
+  "Terraza",
+  "Bodega",
+  "Deporte",
+  "Otros"
+ ],
+ "articulos": [
+  {
+   "slug": "sofa-de-sala",
+   "titulo": "Sofá estilo Cloud modular en L, 4 módulos",
+   "categoria": "Sala",
+   "precio": 15000,
+   "descripcion": "Sofá seccional estilo Cloud, muy amplio en tela gris claro, con cojines de respaldo sueltos y asientos profundos. Son 4 módulos independientes (2 de ellos chaise), así que lo puedes armar en L o separarlo según tu espacio.",
+   "detalles": [
+    "4 módulos: 2 de 100 × 100 cm y 2 chaise de 100 × 173 cm",
+    "Armado en L: 373 × 273 cm",
+    "Altura: 78 cm",
+    "Incluye cojines de respaldo"
+   ],
+   "_img": [
+    "sofa-de-sala-1",
+    "sofa-de-sala-2",
+    "sofa-de-sala-3",
+    "sofa-de-sala-4"
+   ]
+  },
+  {
+   "slug": "tapete-grande-ikea-lokbyte-azul",
+   "titulo": "Tapete grande IKEA Lokbyte azul",
+   "categoria": "Sala",
+   "precio": 1500,
+   "precio_nuevo": 2999,
+   "descripcion": "Tapete grande IKEA Lokbyte en azul oscuro, ideal para sala. Se ve en las fotos debajo del sofá.",
+   "detalles": [
+    "Marca: IKEA, modelo Lokbyte"
+   ],
+   "referencia": "https://www.ikea.com/mx/es/p/lokbyte-tapete-azul-oscuro-beige-claro-70621794/",
+   "_img": [
+    "tapete-grande-ikea-lokbyte-azul-1"
+   ]
+  },
+  {
+   "slug": "mueble-tocadiscos",
+   "titulo": "Mueble para tocadiscos hecho a la medida",
+   "categoria": "Sala",
+   "precio": 6000,
+   "descripcion": "Mueble de madera maciza hecho a la medida para tocadiscos, con tapa abatible, cajones y repisas abajo para guardar vinilos. Las bocinas y el tocadiscos no se incluyen.",
+   "detalles": [
+    "2 módulos",
+    "Altura abierto: 100 cm",
+    "Altura cerrado: 76 cm",
+    "Madera maciza, hecho a la medida"
+   ],
+   "_img": [
+    "mueble-tocadiscos-1",
+    "mueble-tocadiscos-2",
+    "mueble-tocadiscos-3"
+   ]
+  },
+  {
+   "slug": "poltrona-boal",
+   "titulo": "Poltrona individual Boal",
+   "categoria": "Sala",
+   "precio": 5500,
+   "descripcion": "Sillón individual tapizado en tela beige, con brazos de madera oscura y cojín. Muy cómodo para leer.",
+   "detalles": [
+    "Marca: Boal",
+    "Medidas: 120 × 96 × 66 cm"
+   ],
+   "_img": [
+    "poltrona-boal-1",
+    "poltrona-boal-2"
+   ]
+  },
+  {
+   "slug": "sofa-tv",
+   "titulo": "Sofá estilo Cloud con chaise, 2 módulos",
+   "categoria": "Sala",
+   "precio": 10000,
+   "descripcion": "Sofá estilo Cloud en gris, de dos módulos (chaise y sofá): asientos profundos y muy acolchados. Perfecto para el cuarto de TV o un departamento.",
+   "detalles": [
+    "Chaise: 95 × 165 cm",
+    "Módulo sofá: 140 × 95 cm",
+    "Largo total armado: 235 cm"
+   ],
+   "_img": [
+    "sofa-tv-1"
+   ]
+  },
+  {
+   "slug": "mueble-tv",
+   "titulo": "Mueble de TV con cajones",
+   "categoria": "Sala",
+   "precio": 3500,
+   "descripcion": "Credenza estilo mid-century en madera con frentes grises: dos cajones, una puerta y repisa abierta a un costado.",
+   "detalles": [
+    "Medidas: 180 × 39 × 61 cm (largo × fondo × alto)"
+   ],
+   "_img": [
+    "mueble-tv-1",
+    "mueble-tv-2"
+   ]
+  },
+  {
+   "slug": "mesa-comedor",
+   "titulo": "Mesa de comedor cuadrada Mobica Corsa, 8 personas",
+   "categoria": "Comedor",
+   "precio": 13000,
+   "descripcion": "Mesa de comedor de madera maciza con base central, así que nadie se pega con las patas. Cabe cómodamente 8 personas.",
+   "detalles": [
+    "Marca: Mobica, modelo Corsa",
+    "Madera maciza",
+    "Medidas: 160 × 160 × 76 cm",
+    "Capacidad: 8 personas"
+   ],
+   "_img": [
+    "mesa-comedor-1",
+    "mesa-comedor-2"
+   ]
+  },
+  {
+   "slug": "sillas-comedor",
+   "titulo": "8 sillas de comedor Gaia",
+   "categoria": "Comedor",
+   "precio": 3500,
+   "descripcion": "Sillas tapizadas en azul petróleo con patas de madera, las que se ven con la mesa de comedor.",
+   "detalles": [
+    "Marca: Gaia",
+    "Cantidad: 8 sillas",
+    "Precio por las 8"
+   ],
+   "_img": [
+    "sillas-comedor-1"
+   ]
+  },
+  {
+   "slug": "cama-colchon-queen",
+   "titulo": "Cama IKEA Malm Queen con colchón",
+   "categoria": "Recámara",
+   "precio": 12000,
+   "descripcion": "Cama IKEA Malm con almacenamiento inferior, más colchón Lunna intermedio de memory foam. Incluye un juego de sábanas.",
+   "detalles": [
+    "Cama: IKEA Malm con cajones abajo",
+    "Colchón: Lunna intermedio, memory foam",
+    "Incluye juego de sábanas"
+   ],
+   "_img": [
+    "cama-colchon-queen-1"
+   ]
+  },
+  {
+   "slug": "cama-king",
+   "titulo": "Cama King tapizada con colchón",
+   "categoria": "Recámara",
+   "precio": 15000,
+   "descripcion": "Cama King con cabecera y base tapizadas en tela azul, más colchón.",
+   "detalles": [
+    "Tamaño King",
+    "Cabecera y base tapizadas en azul",
+    "Incluye colchón"
+   ],
+   "_img": [
+    "cama-king-1",
+    "cama-king-2"
+   ]
+  },
+  {
+   "slug": "zapatero",
+   "titulo": "Banca / zapatero industrial",
+   "categoria": "Recámara",
+   "precio": 800,
+   "descripcion": "Mueble estilo industrial de metal negro y cubierta efecto madera, con dos repisas de malla. Funciona como zapatero, banca de entrada o mesa para TV.",
+   "detalles": [
+    "Medidas: 100 × 30 × 46 cm"
+   ],
+   "_img": [
+    "zapatero-1"
+   ]
+  },
+  {
+   "slug": "mesa-de-noche-1",
+   "titulo": "Buró IKEA Kullen, 2 cajones",
+   "categoria": "Recámara",
+   "precio": 600,
+   "descripcion": "Buró negro-café con dos cajones.",
+   "detalles": [
+    "Marca: IKEA, modelo Kullen"
+   ],
+   "_img": [
+    "mesa-de-noche-1-1",
+    "mesa-de-noche-1-2"
+   ]
+  },
+  {
+   "slug": "mesa-de-noche-2",
+   "titulo": "Buró IKEA Brimnes gris",
+   "categoria": "Recámara",
+   "precio": 700,
+   "precio_nuevo": 1300,
+   "descripcion": "Buró con un cajón con frente de vidrio esmerilado y un nicho abierto.",
+   "detalles": [
+    "Marca: IKEA, modelo Brimnes"
+   ],
+   "referencia": "https://www.ikea.com/mx/es/p/brimnes-buro-gris-40598257/",
+   "_img": [
+    "mesa-de-noche-2-1"
+   ]
+  },
+  {
+   "slug": "tapete-gris-rombos",
+   "titulo": "Tapete gris con rombos",
+   "categoria": "Recámara",
+   "precio": 500,
+   "descripcion": "Tapete de pelo largo, gris oscuro con diseño de rombos blancos.",
+   "detalles": [],
+   "_img": [
+    "tapete-gris-rombos-1"
+   ]
+  },
+  {
+   "slug": "mesas-de-noche-par",
+   "titulo": "Par de mesas de noche de madera",
+   "categoria": "Recámara",
+   "precio": 3000,
+   "descripcion": "Dos mesas de noche estilo mid-century en madera color nogal, con cajón negro y repisa abierta abajo. Se venden en par.",
+   "detalles": [
+    "2 piezas iguales",
+    "Se venden juntas, precio por el par"
+   ],
+   "_img": [
+    "mesas-de-noche-par-1",
+    "mesas-de-noche-par-2"
+   ]
+  },
+  {
+   "slug": "tv-samsung-65",
+   "titulo": "Pantalla Samsung QLED 65\" Q80T",
+   "categoria": "Electrónica",
+   "precio": 9500,
+   "descripcion": "Smart TV Samsung QLED de 65 pulgadas, modelo Q80T (QN65Q80TAF), 4K.",
+   "detalles": [
+    "65 pulgadas, 4K QLED",
+    "Modelo: QN65Q80TAF",
+    "Fabricada en 2021"
+   ],
+   "_img": [
+    "tv-samsung-65-1"
+   ]
+  },
+  {
+   "slug": "tv-the-frame-55",
+   "titulo": "Pantalla Samsung The Frame 55\" con base caballete",
+   "categoria": "Electrónica",
+   "precio": 10500,
+   "descripcion": "Samsung The Frame de 55 pulgadas: cuando no la usas, muestra arte como si fuera un cuadro. Incluye su base tipo caballete (Studio Stand), así que no necesitas colgarla en la pared.",
+   "detalles": [
+    "55 pulgadas, 4K QLED",
+    "Modo Arte",
+    "Incluye base tipo caballete"
+   ],
+   "_img": [
+    "tv-the-frame-55-1"
+   ]
+  },
+  {
+   "slug": "refrigerador-samsung",
+   "titulo": "Refrigerador Samsung 22 pies, dos puertas",
+   "categoria": "Electrodomésticos",
+   "precio": 15000,
+   "precio_nuevo": 18900,
+   "descripcion": "Refrigerador dúplex side-by-side Samsung de 22 pies cúbicos, acabado negro, con despachador de agua en la puerta.",
+   "detalles": [
+    "Capacidad: 22 pies",
+    "2 puertas (side by side)",
+    "Medidas: 178 cm alto × 91.2 cm ancho × 72.6 cm fondo"
+   ],
+   "_img": [
+    "refrigerador-samsung-1"
+   ]
+  },
+  {
+   "slug": "lavadora-y-secadora",
+   "titulo": "Lavadora y secadora Samsung, carga frontal",
+   "categoria": "Electrodomésticos",
+   "precio": 10000,
+   "descripcion": "Lavadora y secadora Samsung de carga frontal en blanco, apilables (así las tengo instaladas). Se venden juntas.",
+   "detalles": [
+    "Marca: Samsung",
+    "Carga frontal, apilables",
+    "Precio por las dos"
+   ],
+   "_img": [
+    "lavadora-y-secadora-1",
+    "lavadora-y-secadora-2",
+    "lavadora-y-secadora-3"
+   ]
+  },
+  {
+   "slug": "aire-acondicionado-pinguino",
+   "titulo": "Aire acondicionado portátil De'Longhi Pinguino",
+   "categoria": "Electrodomésticos",
+   "precio": 3000,
+   "descripcion": "Aire acondicionado portátil De'Longhi Pinguino, con ruedas para moverlo de cuarto. No requiere instalación fija, solo la salida de la manguera a una ventana.",
+   "detalles": [
+    "Marca: De'Longhi, línea Pinguino",
+    "Portátil, con ruedas"
+   ],
+   "_img": [
+    "aire-acondicionado-pinguino-1"
+   ]
+  },
+  {
+   "slug": "air-fryer-ninja",
+   "titulo": "Freidora de aire Ninja DoubleStack",
+   "categoria": "Cocina",
+   "precio": 1500,
+   "descripcion": "Freidora de aire Ninja con dos canastillas apiladas: cocinas dos cosas al mismo tiempo ocupando poco espacio en la barra.",
+   "detalles": [
+    "Marca: Ninja, modelo DoubleStack",
+    "2 canastillas independientes",
+    "Incluye rejilla"
+   ],
+   "_img": [
+    "air-fryer-ninja-1",
+    "air-fryer-ninja-2"
+   ]
+  },
+  {
+   "slug": "parrilla-cuisinart",
+   "titulo": "Parrilla / sandwichera Cuisinart Griddler",
+   "categoria": "Cocina",
+   "precio": 1500,
+   "descripcion": "Parrilla eléctrica Cuisinart Griddler: se abre como plancha o se cierra como sandwichera/grill de contacto. Placas antiadherentes intercambiables (lisa y estriada).",
+   "detalles": [
+    "Marca: Cuisinart, modelo Griddler",
+    "Placas intercambiables lisa y estriada",
+    "Control de temperatura"
+   ],
+   "_img": [
+    "parrilla-cuisinart-1",
+    "parrilla-cuisinart-2",
+    "parrilla-cuisinart-3",
+    "parrilla-cuisinart-4"
+   ]
+  },
+  {
+   "slug": "cafetera-nespresso",
+   "titulo": "Cafetera de cápsulas Nespresso",
+   "categoria": "Cocina",
+   "precio": 500,
+   "descripcion": "Cafetera compacta de cápsulas Nespresso en gris.",
+   "detalles": [
+    "Usa cápsulas Nespresso Original"
+   ],
+   "_img": [
+    "cafetera-nespresso-1"
+   ]
+  },
+  {
+   "slug": "mesa-comedor-oficina",
+   "titulo": "Mesa de madera para comedor o escritorio (2 disponibles)",
+   "categoria": "Oficina",
+   "precio": 4000,
+   "por_unidad": true,
+   "unidades": 2,
+   "descripcion": "Mesa rectangular de madera que sirve como escritorio o como comedor para 4 a 6 personas. Tengo 2 iguales y se venden por separado: llévate una o las dos.",
+   "detalles": [
+    "Medidas: 160 × 90 × 76 cm",
+    "2 unidades, se venden por separado",
+    "Precio por mesa"
+   ],
+   "_img": [
+    "mesa-comedor-oficina-1"
+   ]
+  },
+  {
+   "slug": "librero",
+   "titulo": "Librero IKEA Billy",
+   "categoria": "Oficina",
+   "precio": 1500,
+   "precio_nuevo": 2999,
+   "descripcion": "Librero alto IKEA Billy en negro efecto roble, con 5 repisas.",
+   "detalles": [
+    "Medidas: 80 × 28 × 202 cm"
+   ],
+   "referencia": "https://www.ikea.com/mx/es/p/billy-librero-negro-efecto-roble-40477340/",
+   "_img": [
+    "librero-1"
+   ]
+  },
+  {
+   "slug": "impresora",
+   "titulo": "Impresora Brother de tinta continua + papel",
+   "categoria": "Oficina",
+   "precio": 3500,
+   "precio_nuevo": 4389,
+   "descripcion": "Impresora multifuncional Brother de tinta continua (imprime, copia y escanea), con 4 meses de muy poco uso. Se va con ¾ de resma de papel.",
+   "detalles": [
+    "4 meses de uso, muy poco",
+    "Incluye ¾ de resma de papel"
+   ],
+   "_img": [
+    "impresora-1"
+   ]
+  },
+  {
+   "slug": "asador-kitchenaid",
+   "titulo": "Asador de carbón KitchenAid tipo carrito",
+   "categoria": "Terraza",
+   "precio": 6000,
+   "precio_nuevo": 11250,
+   "descripcion": "Asador de carbón KitchenAid con tapa y termómetro, parrillas de hierro fundido esmaltado y bandeja de carbón con altura ajustable para controlar el calor. Tiene repisas laterales plegables, cajón de cenizas extraíble y ruedas para moverlo. También sirve para ahumar.",
+   "detalles": [
+    "Marca: KitchenAid, modelo 810-0021",
+    "Parrillas de hierro fundido esmaltado",
+    "Bandeja de carbón con altura ajustable",
+    "Termómetro en la tapa",
+    "Cajón de cenizas extraíble",
+    "Repisas laterales plegables y ruedas"
+   ],
+   "referencia": "https://www.walmart.com.mx/ip/asador-de-carbon-kitchenaid-cart-style-810-0021-negro/00004437628382",
+   "_img": []
+  },
+  {
+   "slug": "estante-whalen-uso-rudo",
+   "titulo": "Estante de uso rudo Whalen, 5 repisas (aguanta 2,268 kg)",
+   "categoria": "Bodega",
+   "precio": 3000,
+   "descripcion": "Estante metálico de uso rudo Whalen Step Beam: acero de grado industrial con pintura en polvo negra anti-óxido y repisas de melamina. Aguanta hasta 454 kg por repisa y 2,268 kg en total, ideal para bodega, garage, cocina o mudanza. Se arma sin tornillos y también se puede armar como dos mesas de trabajo.",
+   "detalles": [
+    "Capacidad: 454 kg por repisa (carga distribuida)",
+    "Capacidad total: 2,268 kg",
+    "5 repisas ajustables",
+    "Medidas: 122 × 45.8 × 183 cm (ancho × fondo × alto)",
+    "Acero industrial con pintura en polvo anti-óxido",
+    "Se arma sin tornillos; también se arma como 2 mesas de trabajo",
+    "Marca: Whalen, modelo Step Beam (WS184872BW-SB5MSC2)",
+    "Fotos de referencia del fabricante"
+   ],
+   "referencia": "https://whalenfurniture.com/product/black-step-beam-5-shelf-unit/",
+   "_img": [
+    "estante-whalen-uso-rudo-1",
+    "estante-whalen-uso-rudo-2"
+   ]
+  },
+  {
+   "slug": "mancuernas-ajustables-altera",
+   "titulo": "Par de mancuernas ajustables Altera (hasta 24 kg c/u)",
+   "categoria": "Deporte",
+   "precio": 4000,
+   "descripcion": "Par de mancuernas ajustables Altera con sus bases. Giras la perilla y eliges el peso: sustituyen un rack completo de mancuernas en muy poco espacio.",
+   "detalles": [
+    "Marca: Altera",
+    "Peso ajustable de 2.5 a 24 kg cada una",
+    "Incluye las 2 bases",
+    "Precio por el par"
+   ],
+   "_img": [
+    "mancuernas-ajustables-altera-1"
+   ]
+  },
+  {
+   "slug": "cama-mascota",
+   "titulo": "Cama redonda para perro mediano",
+   "categoria": "Otros",
+   "precio": 700,
+   "descripcion": "Cama tipo dona, acolchada en negro, para perro mediano.",
+   "detalles": [],
+   "_img": [
+    "cama-mascota-1"
+   ]
+  }
+ ]
+}
