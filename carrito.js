@@ -130,7 +130,7 @@
         nuevo.textContent = e === "vendido" ? "Vendido" : e === "pausado" ? "No disponible" : "Contacto próximamente";
       } else {
         nuevo = document.createElement("a");
-        nuevo.className = "btn"; nuevo.href = ac.dataset.wa; nuevo.target = "_blank"; nuevo.rel = "noopener";
+        nuevo.className = "btn"; nuevo.href = linkWA(host.dataset.slug) || ac.dataset.wa; nuevo.target = "_blank"; nuevo.rel = "noopener";
         nuevo.innerHTML = WA_SVG + " Lo quiero";
       }
       if (viejo) viejo.replaceWith(nuevo);
@@ -141,11 +141,67 @@
     if (nd) nd.textContent = Object.keys(V.items).filter(vendible).length;
   }
 
+  // CSV de la hoja de control publicada: columnas id, estado, precio
+  function parseCSV(txt) {
+    const filas = []; let f = [], c = "", q = false;
+    for (let i = 0; i < txt.length; i++) {
+      const ch = txt[i];
+      if (q) { if (ch === '"' && txt[i + 1] === '"') { c += '"'; i++; } else if (ch === '"') q = false; else c += ch; }
+      else if (ch === '"') q = true;
+      else if (ch === ",") { f.push(c); c = ""; }
+      else if (ch === "\n" || ch === "\r") { if (ch === "\r" && txt[i + 1] === "\n") i++; f.push(c); filas.push(f); f = []; c = ""; }
+      else c += ch;
+    }
+    if (c || f.length) { f.push(c); filas.push(f); }
+    return filas;
+  }
+  function desdeHoja(txt) {
+    const filas = parseCSV(txt);
+    const cab = (filas.shift() || []).map((h) => h.trim().toLowerCase());
+    const iId = cab.indexOf("id"), iE = cab.indexOf("estado"), iP = cab.indexOf("precio");
+    if (iId < 0) return null;
+    const est = {}, precios = {};
+    for (const f of filas) {
+      const k = (f[iId] || "").trim();
+      if (!k || !V.items[k]) continue;
+      let e = (f[iE] || "").trim().toLowerCase();
+      e = { pausa: "pausado", "": "disponible" }[e] || e;
+      if (e !== "disponible") est[k] = e;
+      const p = parseFloat(String(f[iP] || "").replace(/[$,\s]/g, ""));
+      if (p > 0) precios[k] = p;
+    }
+    return { est, precios };
+  }
+  function aplicarPrecios(precios) {
+    const moneda = V.moneda || "MXN";
+    for (const [k, p] of Object.entries(precios)) {
+      if (!V.items[k] || V.items[k].p === p) continue;
+      V.items[k].p = p;
+      document.querySelectorAll(`[data-slug="${k}"] .precio`).forEach((el) => {
+        const cu = el.querySelector("small") ? " <small>c/u</small>" : "";
+        el.classList.remove("consultar");
+        el.innerHTML = fmt(p) + " " + moneda + cu;
+      });
+    }
+  }
+  function linkWA(k) {
+    const it = V.items[k];
+    if (!V.num || !it) return "";
+    const p = it.p == null ? "" : ` (${fmt(it.p)} ${V.moneda})`;
+    return `https://wa.me/${V.num}?text=` + encodeURIComponent(`Hola, me interesa: ${it.t}${p}\n${V.url}a/${k}/`);
+  }
+
   function cargarEstado() {
     const t = Date.now();
-    fetch(BASE + "estado.json?t=" + t, { cache: "no-store" })
+    const deJSON = () => fetch(BASE + "estado.json?t=" + t, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
-      .then((j) => { if (j) { ESTADOS = j.estados || {}; aplicarEstado(); leer(); cambio(); } })
+      .then((j) => (j ? { est: j.estados || {}, precios: {} } : null));
+    const fuente = V.hoja
+      ? fetch(V.hoja + (V.hoja.includes("?") ? "&" : "?") + "t=" + t, { cache: "no-store" })
+          .then((r) => (r.ok ? r.text() : Promise.reject())).then(desdeHoja).then((d) => d || deJSON()).catch(deJSON)
+      : deJSON();
+    fuente
+      .then((d) => { if (d) { ESTADOS = d.est; aplicarPrecios(d.precios); aplicarEstado(); leer(); cambio(); } })
       .catch(() => {});
     fetch(BASE + "pdf.json?t=" + t, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))

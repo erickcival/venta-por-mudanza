@@ -89,6 +89,43 @@ def cargar():
     return cfg, items, avisos
 
 
+def leer_hoja(cfg):
+    """Lee la pestaña pública de la hoja de control (Google Sheets publicada como CSV).
+    Devuelve {slug: (estado, precio)} o None si no hay hoja o no responde."""
+    url = cfg.get("hoja_csv")
+    if not url:
+        return None
+    import csv, io, urllib.request
+    try:
+        with urllib.request.urlopen(url + ("&" if "?" in url else "?") + "t=" + str(os.getpid()), timeout=20) as r:
+            texto = r.read().decode("utf-8")
+    except Exception as e:
+        print("  - AVISO: no pude leer la hoja de control:", e)
+        return None
+    out = {}
+    for fila in csv.DictReader(io.StringIO(texto)):
+        slug = (fila.get("id") or "").strip()
+        if not slug or slug.startswith("#"):
+            continue
+        e = (fila.get("estado") or "").strip().lower()
+        e = {"pausa": "pausado", "": "disponible"}.get(e, e)
+        try:
+            precio = float(str(fila.get("precio") or "").replace("$", "").replace(",", "")) or None
+        except ValueError:
+            precio = None
+        out[slug] = (e, precio)
+    return out
+
+
+def aplicar_hoja(items, est, hoja):
+    if not hoja:
+        return
+    est["estados"] = {k: e for k, (e, _) in hoja.items() if e != "disponible"}
+    for a in items:
+        if a["slug"] in hoja and hoja[a["slug"]][1]:
+            a["precio"] = hoja[a["slug"]][1]
+
+
 def leer_estado(sitio):
     f = sitio / "estado.json"
     return json.loads(f.read_text()) if f.exists() else {"estados": {}}
@@ -468,9 +505,9 @@ def pdf_version(sitio):
     return hashlib.md5(pdf.read_bytes()).hexdigest()[:8] if pdf.exists() else "0"
 
 
-def guardar_pdf_version(sitio, est=None):
-    # archivo aparte para que el bot del PDF nunca choque con los cambios del centro de control
-    (sitio / "pdf.json").write_text(json.dumps({"v": pdf_version(sitio)}) + "\n")
+def guardar_pdf_version(sitio, est=None, firma=""):
+    # "hoja" = firma del estado/precios con que se hizo el PDF, para no regenerarlo si nada cambió
+    (sitio / "pdf.json").write_text(json.dumps({"v": pdf_version(sitio), "hoja": firma}) + "\n")
 
 
 def main_ci(sitio):
@@ -480,9 +517,16 @@ def main_ci(sitio):
     cat = json.loads((SITIO / "catalogo.json").read_text())
     cfg, items = cat["config"], cat["articulos"]
     est = leer_estado(SITIO)
+    hoja = leer_hoja(cfg)
+    firma = hashlib.md5(json.dumps(hoja, sort_keys=True).encode()).hexdigest()[:8] if hoja else ""
+    previo = json.loads((SITIO / "pdf.json").read_text()) if (SITIO / "pdf.json").exists() else {}
+    if hoja and previo.get("hoja") == firma and "--forzar" not in sys.argv:
+        print("Sin cambios en la hoja; no se regenera el PDF.")
+        return
+    aplicar_hoja(items, est, hoja)
     aplicar_estado(items, est)
     generar_pdf(cfg, items)
-    guardar_pdf_version(SITIO, est)
+    guardar_pdf_version(SITIO, est, firma)
     print("PDF regenerado:", pdf_version(SITIO))
 
 
@@ -499,6 +543,20 @@ def main():
     desconocidos = set(est["estados"]) - {a["slug"] for a in items}
     for s_ in desconocidos:
         avisos.append(f"estado.json menciona un artículo que ya no existe: {s_}")
+    # lista para la hoja de control (IMPORTDATA): orden FIJO de alta, nunca se reordena,
+    # para que las columnas que llena el usuario sigan alineadas con su artículo
+    import csv, io
+    buf = io.StringIO()
+    w = csv.writer(buf)
+    w.writerow(["id", "Artículo", "Precio lista"])
+    for a in items:
+        w.writerow([a["slug"], a["titulo"], a.get("precio") if a.get("precio") is not None else ""])
+    (SITIO / "lista.csv").write_text(buf.getvalue())
+    hoja = leer_hoja(cfg)
+    aplicar_hoja(items, est, hoja)
+    if hoja:
+        (SITIO / "estado.json").write_text(json.dumps(est, ensure_ascii=False, indent=2) + "\n")
+    firma = hashlib.md5(json.dumps(hoja, sort_keys=True).encode()).hexdigest()[:8] if hoja else ""
     aplicar_estado(items, est)
     procesar_fotos(items)
     (SITIO / "estilo.css").write_text(CSS)
@@ -509,13 +567,12 @@ def main():
          "articulos": [{k: a[k] for k in PUBLICOS if k in a} for a in items]},
         ensure_ascii=False, indent=1))
     datos = {"num": re.sub(r"\D", "", cfg.get("whatsapp", "")), "url": cfg["url"], "moneda": cfg["moneda"],
+             "hoja": cfg.get("hoja_csv", ""),
              "items": {a["slug"]: {"t": a["titulo"], "p": a.get("precio"), "img": a["_img"][0] if a["_img"] else None,
                                    "max": a.get("unidades", 1) if a.get("por_unidad") else 1}
                        for a in items}}
     (SITIO / "datos.js").write_text("window.VENTA=" + json.dumps(datos, ensure_ascii=False) + ";")
     (SITIO / "carrito.js").write_text((RAIZ / "carrito.js").read_text())
-    (SITIO / "control").mkdir(exist_ok=True)
-    (SITIO / "control" / "index.html").write_text((RAIZ / "control.html").read_text())
     (SITIO / "tools").mkdir(exist_ok=True)
     shutil.copy(RAIZ / "build.py", SITIO / "tools" / "build.py")
     wf = SITIO / ".github" / "workflows"
@@ -523,7 +580,7 @@ def main():
     shutil.copy(RAIZ / "pdf-workflow.yml", wf / "pdf.yml")
     if "--sin-pdf" not in sys.argv:
         generar_pdf(cfg, items)
-        guardar_pdf_version(SITIO, est)
+        guardar_pdf_version(SITIO, est, firma)
     cfg["_pdf"] = "catalogo.pdf?v=" + pdf_version(SITIO)
     (SITIO / "index.html").write_text(pagina_inicio(cfg, items))
     if (SITIO / "a").exists():

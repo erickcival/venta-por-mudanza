@@ -1,6 +1,8 @@
-# Regenera catalogo.pdf cada vez que el centro de control cambia el estado de un artículo.
+# Revisa la hoja de control cada 15 min y regenera catalogo.pdf si cambió algún estado o precio.
 name: Regenerar PDF
 on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
   push:
     branches: [main]
     paths: [estado.json]
