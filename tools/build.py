@@ -26,7 +26,7 @@ IMG = SITIO / "img"
 EXT = {".heic", ".jpg", ".jpeg", ".png", ".webp"}
 CHROME = os.environ.get("CHROME") or shutil.which("google-chrome") or "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ESTADOS = ("disponible", "apartado", "vendido", "pausado")
-CAT_ORDEN = ["Sala", "Comedor", "Recámara", "Electrónica", "Electrodomésticos", "Cocina", "Oficina", "Terraza", "Bodega", "Deporte", "Otros"]
+CAT_ORDEN = ["Sala", "Comedor", "Recámara", "Hogar", "Plantas", "Electrónica", "Electrodomésticos", "Cocina", "Oficina", "Terraza", "Bodega", "Deporte", "Juegos", "Otros"]
 
 esc = lambda s: html.escape(str(s or ""), quote=True)
 
@@ -49,13 +49,14 @@ def cargar():
     avisos = []
 
     usadas = set()
-    conocidas = {a["carpeta"] for a in items if a.get("carpeta")}
+    nfc = lambda t: unicodedata.normalize("NFC", t)   # macOS guarda nombres con acento en NFD
+    conocidas = {nfc(a["carpeta"]) for a in items if a.get("carpeta")}
     # cualquier carpeta (incluso dentro de otra) con fotos visibles es un artículo
     for d in sorted(p for p in RAIZ.rglob("*") if p.is_dir()):
         rel = d.relative_to(RAIZ).as_posix()
         if rel.split("/")[0] in ("sitio", ".venv") or any(s.startswith(".") for s in rel.split("/")):
             continue
-        if rel in conocidas:
+        if nfc(rel) in conocidas:
             continue
         fotos = [f for f in d.iterdir() if f.suffix.lower() in EXT and f.stem not in ocultar]
         if fotos:
@@ -480,7 +481,7 @@ def pdf_html(cfg, items):
         for a in items[k:k + 2]:
             if a["_img"]:
                 mini = "".join(f'<div style="background-image:url(\'img/{n}-t.jpg\')"></div>' for n in a["_img"][1:4])
-                ph = f'<div class="ph"><div class="main" style="background-image:url(\'img/{a["_img"][0]}.jpg\')"></div>{f"<div class=mini>{mini}</div>" if mini else ""}</div>'
+                ph = f'<div class="ph"><div class="main" style="background-image:url(\'img/{a["_img"][0]}-t.jpg\')"></div>{f"<div class=mini>{mini}</div>" if mini else ""}</div>'
             else:
                 ph = '<div class="ph sinf">Foto próximamente</div>'
             p = dinero(a.get("precio"), cfg["moneda"])

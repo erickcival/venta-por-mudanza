@@ -13,6 +13,8 @@
   "Sala",
   "Comedor",
   "Recámara",
+  "Hogar",
+  "Plantas",
   "Electrónica",
   "Electrodomésticos",
   "Cocina",
@@ -20,6 +22,7 @@
   "Terraza",
   "Bodega",
   "Deporte",
+  "Juegos",
   "Otros"
  ],
  "articulos": [
@@ -44,27 +47,11 @@
    ]
   },
   {
-   "slug": "tapete-grande-ikea-lokbyte-azul",
-   "titulo": "Tapete grande IKEA Lokbyte azul",
-   "categoria": "Sala",
-   "precio": 1500,
-   "precio_lista": 1500,
-   "precio_nuevo": 2999,
-   "descripcion": "Tapete grande IKEA Lokbyte en azul oscuro, ideal para sala. Se ve en las fotos debajo del sofá.",
-   "detalles": [
-    "Marca: IKEA, modelo Lokbyte"
-   ],
-   "referencia": "https://www.ikea.com/mx/es/p/lokbyte-tapete-azul-oscuro-beige-claro-70621794/",
-   "_img": [
-    "tapete-grande-ikea-lokbyte-azul-1"
-   ]
-  },
-  {
    "slug": "mueble-tocadiscos",
    "titulo": "Mueble para tocadiscos hecho a la medida",
    "categoria": "Sala",
-   "precio": 6000,
-   "precio_lista": 6000,
+   "precio": 5000,
+   "precio_lista": 5000,
    "descripcion": "Mueble de madera maciza hecho a la medida para tocadiscos, con tapa abatible, cajones y repisas abajo para guardar vinilos. Las bocinas y el tocadiscos no se incluyen.",
    "detalles": [
     "2 módulos",
@@ -146,6 +133,22 @@
    ]
   },
   {
+   "slug": "tapete-grande-ikea-lokbyte-azul",
+   "titulo": "Tapete grande IKEA Lokbyte azul",
+   "categoria": "Sala",
+   "precio": 1500,
+   "precio_lista": 1500,
+   "precio_nuevo": 2999,
+   "descripcion": "Tapete grande IKEA Lokbyte en azul oscuro, ideal para sala. Se ve en las fotos debajo del sofá.",
+   "detalles": [
+    "Marca: IKEA, modelo Lokbyte"
+   ],
+   "referencia": "https://www.ikea.com/mx/es/p/lokbyte-tapete-azul-oscuro-beige-claro-70621794/",
+   "_img": [
+    "tapete-grande-ikea-lokbyte-azul-1"
+   ]
+  },
+  {
    "slug": "mueble-tv",
    "titulo": "Mueble de TV con cajones",
    "categoria": "Sala",
@@ -164,7 +167,7 @@
    "slug": "mesa-comedor",
    "titulo": "Mesa de comedor cuadrada Mobica Corsa, 8 personas",
    "categoria": "Comedor",
-   "precio": 13000,
+   "precio": 10000,
    "precio_lista": 13000,
    "descripcion": "Mesa de comedor de madera maciza con base central, así que nadie se pega con las patas. Cabe cómodamente 8 personas.",
    "detalles": [
@@ -228,20 +231,6 @@
    ]
   },
   {
-   "slug": "zapatero",
-   "titulo": "Banca / zapatero industrial",
-   "categoria": "Recámara",
-   "precio": 800,
-   "precio_lista": 800,
-   "descripcion": "Mueble estilo industrial de metal negro y cubierta efecto madera, con dos repisas de malla. Funciona como zapatero, banca de entrada o mesa para TV.",
-   "detalles": [
-    "Medidas: 100 × 30 × 46 cm"
-   ],
-   "_img": [
-    "zapatero-1"
-   ]
-  },
-  {
    "slug": "mesa-de-noche-1",
    "titulo": "Buró IKEA Kullen, 2 cajones",
    "categoria": "Recámara",
@@ -301,11 +290,281 @@
    ]
   },
   {
+   "slug": "espejo-luz-led",
+   "titulo": "Espejo de tocador con luz LED",
+   "categoria": "Recámara",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Espejo de tocador con luz LED táctil, base de acero.",
+   "detalles": [],
+   "_img": [
+    "espejo-luz-led-1"
+   ]
+  },
+  {
+   "slug": "zapatero",
+   "titulo": "Banca / zapatero industrial",
+   "categoria": "Recámara",
+   "precio": 800,
+   "precio_lista": 800,
+   "descripcion": "Mueble estilo industrial de metal negro y cubierta efecto madera, con dos repisas de malla. Funciona como zapatero, banca de entrada o mesa para TV.",
+   "detalles": [
+    "Medidas: 100 × 30 × 46 cm"
+   ],
+   "_img": [
+    "zapatero-1"
+   ]
+  },
+  {
+   "slug": "purificador-aire",
+   "titulo": "Purificador de aire de torre",
+   "categoria": "Hogar",
+   "precio": 700,
+   "precio_lista": 700,
+   "descripcion": "Purificador de aire tipo torre, compacto, para recámara u oficina.",
+   "detalles": [],
+   "_img": [
+    "purificador-aire-1"
+   ]
+  },
+  {
+   "slug": "cartas-nauticas-enmarcadas",
+   "titulo": "2 cartas náuticas enmarcadas: Yucatán e Isla Mujeres",
+   "categoria": "Hogar",
+   "precio": 1500,
+   "precio_lista": 1500,
+   "descripcion": "Dos cartas náuticas grandes enmarcadas en madera: la península de Yucatán e Isla Mujeres. Decoración con mucho carácter.",
+   "detalles": [
+    "2 cuadros",
+    "Marco de madera",
+    "Precio por los dos"
+   ],
+   "_img": [
+    "cartas-nauticas-enmarcadas-1"
+   ]
+  },
+  {
+   "slug": "plancha-vapor-viaje",
+   "titulo": "Plancha de vapor de viaje",
+   "categoria": "Hogar",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Plancha de vapor compacta para viaje, con su accesorio.",
+   "detalles": [],
+   "_img": [
+    "plancha-vapor-viaje-1"
+   ]
+  },
+  {
+   "slug": "lamparas-techo-led-x2",
+   "titulo": "2 lámparas LED de techo inteligentes (nuevas)",
+   "categoria": "Hogar",
+   "precio": 550,
+   "precio_lista": 550,
+   "descripcion": "Dos lámparas de techo LED inteligentes de 30 cm, nuevas en su caja. Luz blanca regulable y colores.",
+   "detalles": [
+    "2 piezas, nuevas en caja",
+    "24 W + 5 W, 30 cm",
+    "Precio por las dos"
+   ],
+   "_img": [
+    "lamparas-techo-led-x2-1",
+    "lamparas-techo-led-x2-2"
+   ]
+  },
+  {
+   "slug": "repisas-ikea-bambu",
+   "titulo": "Repisas IKEA de bambú",
+   "categoria": "Hogar",
+   "precio": 100,
+   "precio_lista": 100,
+   "por_unidad": true,
+   "unidades": 2,
+   "descripcion": "Repisas de pared IKEA de bambú, perfectas para libros o cuadros. Tengo 2 y se venden por separado.",
+   "detalles": [
+    "2 piezas, se venden por separado",
+    "Precio por repisa"
+   ],
+   "_img": [
+    "repisas-ikea-bambu-1"
+   ]
+  },
+  {
+   "slug": "lampara-ikea-holmo",
+   "titulo": "Lámpara de pie IKEA Hölmö",
+   "categoria": "Hogar",
+   "precio": 100,
+   "precio_lista": 100,
+   "descripcion": "Lámpara de pie IKEA de papel con base metálica. Tiene un detalle (ver fotos), por eso el precio.",
+   "detalles": [
+    "Tiene un detalle"
+   ],
+   "_img": [
+    "lampara-ikea-holmo-1"
+   ]
+  },
+  {
+   "slug": "canasta-fibra",
+   "titulo": "Canasta de fibra natural",
+   "categoria": "Hogar",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Canasta tejida de fibra natural con asas, para plantas o guardar cosas.",
+   "detalles": [],
+   "_img": [
+    "canasta-fibra-1"
+   ]
+  },
+  {
+   "slug": "colgador-escobas",
+   "titulo": "Colgador de escobas y trapeadores",
+   "categoria": "Hogar",
+   "precio": 50,
+   "precio_lista": 50,
+   "descripcion": "Organizador metálico de pared para escobas y trapeadores.",
+   "detalles": [],
+   "_img": [
+    "colgador-escobas-1"
+   ]
+  },
+  {
+   "slug": "maceta-ceramica-verde",
+   "titulo": "Maceta de cerámica verde con plato",
+   "categoria": "Plantas",
+   "precio": 200,
+   "precio_lista": 200,
+   "descripcion": "Maceta de cerámica esmaltada verde con su plato.",
+   "detalles": [],
+   "_img": [
+    "maceta-ceramica-verde-1"
+   ]
+  },
+  {
+   "slug": "lengua-de-suegra",
+   "titulo": "Jardinera de lengua de suegra",
+   "categoria": "Plantas",
+   "precio": 300,
+   "precio_lista": 300,
+   "por_unidad": true,
+   "unidades": 3,
+   "descripcion": "Jardineras largas llenas de lengua de suegra, muy sanas. Precio por jardinera.",
+   "detalles": [
+    "Precio por jardinera"
+   ],
+   "_img": [
+    "lengua-de-suegra-1",
+    "lengua-de-suegra-2",
+    "lengua-de-suegra-3"
+   ]
+  },
+  {
+   "slug": "monsteras-x2",
+   "titulo": "2 Monsteras con maceta",
+   "categoria": "Plantas",
+   "precio": 1000,
+   "precio_lista": 1000,
+   "descripcion": "Dos Monsteras grandes en sus macetas.",
+   "detalles": [
+    "2 plantas con maceta",
+    "Precio por las dos"
+   ],
+   "_img": [
+    "monsteras-x2-1",
+    "monsteras-x2-2"
+   ]
+  },
+  {
+   "slug": "olivo",
+   "titulo": "Olivo en maceta",
+   "categoria": "Plantas",
+   "precio": 600,
+   "precio_lista": 600,
+   "descripcion": "Olivo en maceta, ideal para terraza.",
+   "detalles": [],
+   "_img": [
+    "olivo-1"
+   ]
+  },
+  {
+   "slug": "ficus-pandurata",
+   "titulo": "Ficus pandurata con maceta",
+   "categoria": "Plantas",
+   "precio": 500,
+   "precio_lista": 500,
+   "descripcion": "Ficus lyrata (pandurata) alto en maceta de concreto.",
+   "detalles": [],
+   "_img": [
+    "ficus-pandurata-1"
+   ]
+  },
+  {
+   "slug": "palos-de-brasil",
+   "titulo": "2 palos de Brasil con maceta",
+   "categoria": "Plantas",
+   "precio": 400,
+   "precio_lista": 400,
+   "descripcion": "Dos palos de Brasil en macetas negras.",
+   "detalles": [
+    "Precio por los dos"
+   ],
+   "_img": [
+    "palos-de-brasil-1"
+   ]
+  },
+  {
+   "slug": "calathea-con-base",
+   "titulo": "Calathea con maceta y base de madera",
+   "categoria": "Plantas",
+   "precio": 350,
+   "precio_lista": 350,
+   "descripcion": "Calathea de hojas grandes en maceta con base de madera.",
+   "detalles": [],
+   "_img": [
+    "calathea-con-base-1"
+   ]
+  },
+  {
+   "slug": "orquideas-x3",
+   "titulo": "3 orquídeas con maceta",
+   "categoria": "Plantas",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Tres orquídeas blancas con su maceta.",
+   "detalles": [],
+   "_img": [
+    "orquideas-x3-1"
+   ]
+  },
+  {
+   "slug": "plantas-varias",
+   "titulo": "Plantas varias",
+   "categoria": "Plantas",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Plantas chicas: macetas colgantes con pothos y otras plantas de interior.",
+   "detalles": [],
+   "_img": [
+    "plantas-varias-1"
+   ]
+  },
+  {
+   "slug": "maceta-planta-recuperar",
+   "titulo": "Maceta de concreto con planta para recuperar",
+   "categoria": "Plantas",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Maceta de concreto con una planta que necesita cariño para recuperarse.",
+   "detalles": [],
+   "_img": [
+    "maceta-planta-recuperar-1"
+   ]
+  },
+  {
    "slug": "tv-samsung-65",
    "titulo": "Pantalla Samsung QLED 65\" Q80T",
    "categoria": "Electrónica",
-   "precio": 9500,
-   "precio_lista": 9500,
+   "precio": 8250,
+   "precio_lista": 8250,
    "descripcion": "Smart TV Samsung QLED de 65 pulgadas, modelo Q80T (QN65Q80TAF), 4K.",
    "detalles": [
     "65 pulgadas, 4K QLED",
@@ -336,7 +595,7 @@
    "slug": "refrigerador-samsung",
    "titulo": "Refrigerador Samsung 22 pies, dos puertas",
    "categoria": "Electrodomésticos",
-   "precio": 15000,
+   "precio": 12000,
    "precio_lista": 15000,
    "precio_nuevo": 18900,
    "descripcion": "Refrigerador dúplex side-by-side Samsung de 22 pies cúbicos, acabado negro, con despachador de agua en la puerta.",
@@ -353,7 +612,7 @@
    "slug": "lavadora-y-secadora",
    "titulo": "Lavadora y secadora Samsung, carga frontal",
    "categoria": "Electrodomésticos",
-   "precio": 10000,
+   "precio": 7000,
    "precio_lista": 10000,
    "descripcion": "Lavadora y secadora Samsung de carga frontal en blanco, apilables (así las tengo instaladas). Se venden juntas.",
    "detalles": [
@@ -365,6 +624,111 @@
     "lavadora-y-secadora-1",
     "lavadora-y-secadora-2",
     "lavadora-y-secadora-3"
+   ]
+  },
+  {
+   "slug": "microondas-panasonic",
+   "titulo": "Microondas Panasonic Inverter 1.2 pies",
+   "categoria": "Electrodomésticos",
+   "precio": 1500,
+   "precio_lista": 1500,
+   "descripcion": "Horno de microondas Panasonic con tecnología Inverter, frente de acero inoxidable.",
+   "detalles": [
+    "Marca: Panasonic",
+    "Tecnología Inverter",
+    "Capacidad: 1.2 pies cúbicos"
+   ],
+   "_img": [
+    "microondas-panasonic-1"
+   ]
+  },
+  {
+   "slug": "nutribullet",
+   "titulo": "Nutribullet",
+   "categoria": "Electrodomésticos",
+   "precio": 550,
+   "precio_lista": 550,
+   "descripcion": "Extractor de nutrientes Nutribullet para licuados y smoothies.",
+   "detalles": [],
+   "_img": [
+    "nutribullet-1"
+   ]
+  },
+  {
+   "slug": "licuadora-oster",
+   "titulo": "Licuadora Oster con vaso de vidrio",
+   "categoria": "Electrodomésticos",
+   "precio": 500,
+   "precio_lista": 500,
+   "descripcion": "Licuadora Oster cromada de 16 velocidades con vaso de vidrio.",
+   "detalles": [
+    "Marca: Oster",
+    "16 velocidades",
+    "Vaso de vidrio"
+   ],
+   "_img": [
+    "licuadora-oster-1"
+   ]
+  },
+  {
+   "slug": "mini-procesador-oster",
+   "titulo": "Mini procesador Oster con tazón de vidrio",
+   "categoria": "Electrodomésticos",
+   "precio": 450,
+   "precio_lista": 450,
+   "descripcion": "Mini picadora Oster de 3 tazas con tazón de vidrio y accesorio batidor. Con su caja.",
+   "detalles": [
+    "Marca: Oster",
+    "3 tazas",
+    "Incluye caja"
+   ],
+   "_img": [
+    "mini-procesador-oster-1",
+    "mini-procesador-oster-2"
+   ]
+  },
+  {
+   "slug": "arepera-holstein",
+   "titulo": "Arepera eléctrica Holstein",
+   "categoria": "Electrodomésticos",
+   "precio": 400,
+   "precio_lista": 400,
+   "descripcion": "Arepera eléctrica Holstein antiadherente: hace varias arepas a la vez. Incluye instructivo.",
+   "detalles": [
+    "Marca: Holstein Housewares",
+    "Antiadherente"
+   ],
+   "_img": [
+    "arepera-holstein-1",
+    "arepera-holstein-2"
+   ]
+  },
+  {
+   "slug": "tostador-oster",
+   "titulo": "Tostador Oster de acero, 2 rebanadas",
+   "categoria": "Electrodomésticos",
+   "precio": 350,
+   "precio_lista": 350,
+   "descripcion": "Tostador Oster de 2 rebanadas en acero inoxidable.",
+   "detalles": [],
+   "_img": [
+    "tostador-oster-1"
+   ]
+  },
+  {
+   "slug": "batidora-taurus",
+   "titulo": "Batidora de mano Taurus",
+   "categoria": "Electrodomésticos",
+   "precio": 220,
+   "precio_lista": 220,
+   "descripcion": "Batidora manual Taurus de 5 velocidades con sus aspas. Con caja.",
+   "detalles": [
+    "Marca: Taurus",
+    "5 velocidades",
+    "Incluye caja"
+   ],
+   "_img": [
+    "batidora-taurus-1"
    ]
   },
   {
@@ -397,6 +761,262 @@
    "_img": [
     "air-fryer-ninja-1",
     "air-fryer-ninja-2"
+   ]
+  },
+  {
+   "slug": "dispensador-bebidas",
+   "titulo": "Dispensador de bebidas de vidrio",
+   "categoria": "Cocina",
+   "precio": 250,
+   "precio_lista": 250,
+   "descripcion": "Vitrolero de vidrio estilo mason con llave, para aguas frescas y fiestas.",
+   "detalles": [],
+   "_img": [
+    "dispensador-bebidas-1"
+   ]
+  },
+  {
+   "slug": "ollas-sartenes",
+   "titulo": "Juego de ollas y sartenes",
+   "categoria": "Cocina",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Juego de ollas y sartenes antiadherentes.",
+   "detalles": [],
+   "_img": [
+    "ollas-sartenes-1"
+   ]
+  },
+  {
+   "slug": "sartenes-3",
+   "titulo": "3 sartenes con mango de acero",
+   "categoria": "Cocina",
+   "precio": 600,
+   "precio_lista": 600,
+   "descripcion": "Tres sartenes antiadherentes de distintos tamaños con mango de acero inoxidable.",
+   "detalles": [],
+   "_img": [
+    "sartenes-3-1"
+   ]
+  },
+  {
+   "slug": "toppers-vidrio-cuadrados",
+   "titulo": "Toppers de vidrio cuadrados (2 juegos)",
+   "categoria": "Cocina",
+   "precio": 450,
+   "precio_lista": 450,
+   "descripcion": "Recipientes de vidrio con tapa hermética, en varios tamaños.",
+   "detalles": [],
+   "_img": [
+    "toppers-vidrio-cuadrados-1",
+    "toppers-vidrio-cuadrados-2"
+   ]
+  },
+  {
+   "slug": "copas-vino-12",
+   "titulo": "12 copas de vino",
+   "categoria": "Cocina",
+   "precio": 1200,
+   "precio_lista": 1200,
+   "descripcion": "Juego de 12 copas de vino de cristal.",
+   "detalles": [
+    "12 copas"
+   ],
+   "_img": [
+    "copas-vino-12-1"
+   ]
+  },
+  {
+   "slug": "utensilios-cocina-20",
+   "titulo": "Juego de utensilios de cocina (~20 piezas)",
+   "categoria": "Cocina",
+   "precio": 350,
+   "precio_lista": 350,
+   "descripcion": "Espátulas, cucharones, batidor, abrelatas, pelador, tazas medidoras y más.",
+   "detalles": [],
+   "_img": [
+    "utensilios-cocina-20-1"
+   ]
+  },
+  {
+   "slug": "cubiertos-40",
+   "titulo": "Juego de cubiertos (~40 piezas)",
+   "categoria": "Cocina",
+   "precio": 500,
+   "precio_lista": 500,
+   "descripcion": "Cubiertos de acero inoxidable: tenedores, cuchillos y cucharas.",
+   "detalles": [],
+   "_img": [
+    "cubiertos-40-1"
+   ]
+  },
+  {
+   "slug": "cuchillos-bloque",
+   "titulo": "Juego de cuchillos con bloque de madera",
+   "categoria": "Cocina",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Juego de cuchillos con mango de madera, tijeras y bloque.",
+   "detalles": [],
+   "_img": [
+    "cuchillos-bloque-1"
+   ]
+  },
+  {
+   "slug": "toppers-vidrio-redondos",
+   "titulo": "Toppers de vidrio redondos",
+   "categoria": "Cocina",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Recipientes redondos de vidrio con tapa hermética.",
+   "detalles": [],
+   "_img": [
+    "toppers-vidrio-redondos-1"
+   ]
+  },
+  {
+   "slug": "escurridor-2-niveles",
+   "titulo": "Escurridor de trastes de 2 niveles",
+   "categoria": "Cocina",
+   "precio": 250,
+   "precio_lista": 250,
+   "descripcion": "Escurridor metálico negro de dos niveles con charolas, portacubiertos y portatablas.",
+   "detalles": [],
+   "_img": [
+    "escurridor-2-niveles-1"
+   ]
+  },
+  {
+   "slug": "utensilios-nylon-5",
+   "titulo": "Utensilios de cocina de nylon (5 piezas)",
+   "categoria": "Cocina",
+   "precio": 220,
+   "precio_lista": 220,
+   "descripcion": "Cuchara, cucharón, espátulas y cuchara para pasta de nylon negro.",
+   "detalles": [],
+   "_img": [
+    "utensilios-nylon-5-1"
+   ]
+  },
+  {
+   "slug": "tablas-bambu-3",
+   "titulo": "3 tablas de bambú para picar o servir",
+   "categoria": "Cocina",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Tres tablas de bambú: dos rectangulares y una redonda.",
+   "detalles": [],
+   "_img": [
+    "tablas-bambu-3-1"
+   ]
+  },
+  {
+   "slug": "cuchillos-montana",
+   "titulo": "Juego de cuchillos Montana (12 piezas)",
+   "categoria": "Cocina",
+   "precio": 200,
+   "precio_lista": 200,
+   "descripcion": "Cuchillos con mango de madera: chef, carnicero y cuchillos para carne.",
+   "detalles": [],
+   "_img": [
+    "cuchillos-montana-1"
+   ]
+  },
+  {
+   "slug": "toppers-plastico",
+   "titulo": "Toppers de plástico con tapa hermética",
+   "categoria": "Cocina",
+   "precio": 200,
+   "precio_lista": 200,
+   "descripcion": "Recipientes de plástico con tapa hermética en varios tamaños.",
+   "detalles": [],
+   "_img": [
+    "toppers-plastico-1"
+   ]
+  },
+  {
+   "slug": "refractario-ceramico",
+   "titulo": "Refractario cerámico",
+   "categoria": "Cocina",
+   "precio": 170,
+   "precio_lista": 170,
+   "descripcion": "Refractario rectangular de cerámica gris para horno.",
+   "detalles": [],
+   "_img": [
+    "refractario-ceramico-1",
+    "refractario-ceramico-2"
+   ]
+  },
+  {
+   "slug": "bowls-mickey",
+   "titulo": "2 bowls de Mickey",
+   "categoria": "Cocina",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Par de bowls de cerámica con diseño de Mickey Mouse.",
+   "detalles": [],
+   "_img": [
+    "bowls-mickey-1"
+   ]
+  },
+  {
+   "slug": "medidor-pyrex",
+   "titulo": "Taza medidora Pyrex de vidrio",
+   "categoria": "Cocina",
+   "precio": 120,
+   "precio_lista": 120,
+   "descripcion": "Taza medidora de vidrio Pyrex.",
+   "detalles": [],
+   "_img": [
+    "medidor-pyrex-1"
+   ]
+  },
+  {
+   "slug": "afilador-cuchillos",
+   "titulo": "Afilador de cuchillos",
+   "categoria": "Cocina",
+   "precio": 120,
+   "precio_lista": 120,
+   "descripcion": "Afilador de cuchillos manual.",
+   "detalles": [],
+   "_img": [
+    "afilador-cuchillos-1"
+   ]
+  },
+  {
+   "slug": "jarra-plastico",
+   "titulo": "Jarra de plástico",
+   "categoria": "Cocina",
+   "precio": 90,
+   "precio_lista": 90,
+   "descripcion": "Jarra de acrílico transparente.",
+   "detalles": [],
+   "_img": [
+    "jarra-plastico-1"
+   ]
+  },
+  {
+   "slug": "jarra-vidrio",
+   "titulo": "Jarra de vidrio con tapa",
+   "categoria": "Cocina",
+   "precio": 70,
+   "precio_lista": 70,
+   "descripcion": "Jarra de vidrio con tapa para agua o jugo.",
+   "detalles": [],
+   "_img": [
+    "jarra-vidrio-1"
+   ]
+  },
+  {
+   "slug": "rallador",
+   "titulo": "Rallador de acero",
+   "categoria": "Cocina",
+   "precio": 70,
+   "precio_lista": 70,
+   "descripcion": "Rallador de acero inoxidable de 4 caras.",
+   "detalles": [],
+   "_img": [
+    "rallador-1"
    ]
   },
   {
@@ -433,24 +1053,6 @@
    ]
   },
   {
-   "slug": "mesa-comedor-oficina",
-   "titulo": "Mesa de madera para comedor o escritorio (2 disponibles)",
-   "categoria": "Oficina",
-   "precio": 4000,
-   "precio_lista": 4000,
-   "por_unidad": true,
-   "unidades": 2,
-   "descripcion": "Mesa rectangular de madera que sirve como escritorio o como comedor para 4 a 6 personas. Tengo 2 iguales y se venden por separado: llévate una o las dos.",
-   "detalles": [
-    "Medidas: 160 × 90 × 76 cm",
-    "2 unidades, se venden por separado",
-    "Precio por mesa"
-   ],
-   "_img": [
-    "mesa-comedor-oficina-1"
-   ]
-  },
-  {
    "slug": "librero",
    "titulo": "Librero IKEA Billy",
    "categoria": "Oficina",
@@ -483,6 +1085,77 @@
    ]
   },
   {
+   "slug": "monitor-benq-27",
+   "titulo": "Monitor BenQ GW2780 de 27\" Full HD",
+   "categoria": "Oficina",
+   "precio": 1800,
+   "precio_lista": 1800,
+   "descripcion": "Monitor BenQ de 27 pulgadas Full HD con panel IPS y marco delgado. Tecnología Eye-Care para cuidar la vista.",
+   "detalles": [
+    "Modelo: BenQ GW2780",
+    "27 pulgadas, 1920 × 1080",
+    "Panel IPS",
+    "Fabricado en noviembre 2022"
+   ],
+   "_img": [
+    "monitor-benq-27-1",
+    "monitor-benq-27-2",
+    "monitor-benq-27-3"
+   ]
+  },
+  {
+   "slug": "silla-oficina-malla",
+   "titulo": "Silla de oficina de malla",
+   "categoria": "Oficina",
+   "precio": 550,
+   "precio_lista": 550,
+   "descripcion": "Silla de oficina giratoria con respaldo de malla y ruedas.",
+   "detalles": [],
+   "_img": [
+    "silla-oficina-malla-1"
+   ]
+  },
+  {
+   "slug": "mesa-cama-laptop-1",
+   "titulo": "Mesa de cama para laptop (madera)",
+   "categoria": "Oficina",
+   "precio": 200,
+   "precio_lista": 200,
+   "descripcion": "Mesa plegable para cama o sillón, ideal para laptop. Con portavasos y ranura para tablet.",
+   "detalles": [],
+   "_img": [
+    "mesa-cama-laptop-1-1",
+    "mesa-cama-laptop-1-2"
+   ]
+  },
+  {
+   "slug": "mesa-cama-laptop-2",
+   "titulo": "Mesa de cama para laptop con puertos USB",
+   "categoria": "Oficina",
+   "precio": 200,
+   "precio_lista": 200,
+   "descripcion": "Mesa plegable para cama o sillón con puertos USB, portavasos y ranura para tablet.",
+   "detalles": [],
+   "_img": [
+    "mesa-cama-laptop-2-1",
+    "mesa-cama-laptop-2-2"
+   ]
+  },
+  {
+   "slug": "mesa-comedor-oficina",
+   "titulo": "Mesa de madera para comedor o escritorio",
+   "categoria": "Oficina",
+   "precio": 4000,
+   "precio_lista": 4000,
+   "descripcion": "Mesa rectangular de madera que sirve como escritorio o como comedor para 4 a 6 personas.",
+   "detalles": [
+    "Medidas: 160 × 90 × 76 cm"
+   ],
+   "_img": [
+    "mesa-comedor-oficina-1"
+   ]
+  },
+  {
    "slug": "asador-kitchenaid",
    "titulo": "Asador de carbón KitchenAid tipo carrito",
    "categoria": "Terraza",
@@ -500,6 +1173,34 @@
    ],
    "referencia": "https://www.walmart.com.mx/ip/asador-de-carbon-kitchenaid-cart-style-810-0021-negro/00004437628382",
    "_img": []
+  },
+  {
+   "slug": "sillas-acapulco",
+   "titulo": "2 sillas Acapulco blancas",
+   "categoria": "Terraza",
+   "precio": 2000,
+   "precio_lista": 2000,
+   "descripcion": "Par de sillas Acapulco de cuerda blanca con estructura metálica. Clásico diseño mexicano, para interior o terraza.",
+   "detalles": [
+    "2 sillas",
+    "Precio por el par"
+   ],
+   "_img": [
+    "sillas-acapulco-1",
+    "sillas-acapulco-2"
+   ]
+  },
+  {
+   "slug": "utensilios-parrilla",
+   "titulo": "Juego de utensilios para parrilla (4 piezas)",
+   "categoria": "Terraza",
+   "precio": 200,
+   "precio_lista": 200,
+   "descripcion": "Pinzas, espátula, tenedor y espátula calada de acero para asador.",
+   "detalles": [],
+   "_img": [
+    "utensilios-parrilla-1"
+   ]
   },
   {
    "slug": "estante-whalen-uso-rudo",
@@ -539,6 +1240,165 @@
    ],
    "_img": [
     "mancuernas-ajustables-altera-1"
+   ]
+  },
+  {
+   "slug": "ebike-commencal-meta",
+   "titulo": "eBike Commencal Meta, talla M",
+   "categoria": "Deporte",
+   "precio": 50000,
+   "precio_lista": 50000,
+   "descripcion": "Bicicleta eléctrica de montaña Commencal Meta de doble suspensión, con motor y pantalla Shimano. Talla M. Muy bien cuidada.",
+   "detalles": [
+    "Talla M",
+    "Motor y pantalla Shimano",
+    "Doble suspensión",
+    "4,880 km recorridos"
+   ],
+   "_img": [
+    "ebike-commencal-meta-1",
+    "ebike-commencal-meta-2",
+    "ebike-commencal-meta-3",
+    "ebike-commencal-meta-4",
+    "ebike-commencal-meta-5"
+   ]
+  },
+  {
+   "slug": "mesa-camping-coleman",
+   "titulo": "Mesa de camping Coleman de aluminio",
+   "categoria": "Deporte",
+   "precio": 1100,
+   "precio_lista": 1100,
+   "descripcion": "Mesa plegable Coleman con cubierta de tablillas de aluminio que se enrolla. Se guarda en su bolsa y se arma en un minuto.",
+   "detalles": [
+    "Marca: Coleman",
+    "Cubierta de aluminio enrollable",
+    "Incluye bolsa"
+   ],
+   "_img": [
+    "mesa-camping-coleman-1",
+    "mesa-camping-coleman-2",
+    "mesa-camping-coleman-3"
+   ]
+  },
+  {
+   "slug": "bolas-criollas",
+   "titulo": "Set de bolas criollas con bolsa",
+   "categoria": "Deporte",
+   "precio": 500,
+   "precio_lista": 500,
+   "descripcion": "Juego de bolas criollas (tipo bocce) con su bolsa.",
+   "detalles": [],
+   "_img": [
+    "bolas-criollas-1"
+   ]
+  },
+  {
+   "slug": "guantes-box-krav-maga",
+   "titulo": "Guantes de box Krav Maga Worldwide",
+   "categoria": "Deporte",
+   "precio": 400,
+   "precio_lista": 400,
+   "descripcion": "Guantes de box de piel sintética negros, marca Krav Maga Worldwide.",
+   "detalles": [],
+   "_img": [
+    "guantes-box-krav-maga-1"
+   ]
+  },
+  {
+   "slug": "equipo-ejercicio",
+   "titulo": "Equipo de ejercicio: rodillo, tobilleras y liga",
+   "categoria": "Deporte",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Rodillo de masaje muscular, par de tobilleras con peso Excel y liga de resistencia con agarres.",
+   "detalles": [],
+   "_img": [
+    "equipo-ejercicio-1"
+   ]
+  },
+  {
+   "slug": "masajeador",
+   "titulo": "Masajeador",
+   "categoria": "Deporte",
+   "precio": 100,
+   "precio_lista": 100,
+   "descripcion": "Masajeador en su empaque.",
+   "detalles": [],
+   "_img": [
+    "masajeador-1"
+   ]
+  },
+  {
+   "slug": "gorro-natacion-nike",
+   "titulo": "Gorro de natación Nike de silicona (nuevo)",
+   "categoria": "Deporte",
+   "precio": 180,
+   "precio_lista": 180,
+   "descripcion": "Gorro de natación Nike de silicona, nuevo en su empaque.",
+   "detalles": [],
+   "_img": [
+    "gorro-natacion-nike-1"
+   ]
+  },
+  {
+   "slug": "cinturon-natacion",
+   "titulo": "Cinturón de entrenamiento para nadar en alberca",
+   "categoria": "Deporte",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Cinturón con liga de resistencia para nadar en el mismo lugar en albercas chicas. Con bolsa de malla.",
+   "detalles": [],
+   "_img": [
+    "cinturon-natacion-1"
+   ]
+  },
+  {
+   "slug": "mat-yoga",
+   "titulo": "Mat de yoga con funda",
+   "categoria": "Deporte",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Tapete de yoga morado con funda para cargar.",
+   "detalles": [],
+   "_img": [
+    "mat-yoga-1"
+   ]
+  },
+  {
+   "slug": "barras-lagartijas",
+   "titulo": "Barras para lagartijas",
+   "categoria": "Deporte",
+   "precio": 100,
+   "precio_lista": 100,
+   "descripcion": "Par de barras para hacer lagartijas (push-ups) con agarre acolchado.",
+   "detalles": [],
+   "_img": [
+    "barras-lagartijas-1"
+   ]
+  },
+  {
+   "slug": "juego-akropolis",
+   "titulo": "Juego de mesa Akropolis",
+   "categoria": "Juegos",
+   "precio": 350,
+   "precio_lista": 350,
+   "descripcion": "Akropolis: juego de estrategia para construir una ciudad griega. De 1 a 4 jugadores.",
+   "detalles": [],
+   "_img": [
+    "juego-akropolis-1"
+   ]
+  },
+  {
+   "slug": "juego-exploding-kittens",
+   "titulo": "Juego de cartas Exploding Kittens",
+   "categoria": "Juegos",
+   "precio": 220,
+   "precio_lista": 220,
+   "descripcion": "Exploding Kittens edición original. De 2 a 5 jugadores.",
+   "detalles": [],
+   "_img": [
+    "juego-exploding-kittens-1"
    ]
   },
   {

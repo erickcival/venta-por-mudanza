@@ -3,13 +3,13 @@ sofa-de-sala,"Sofá estilo Cloud modular en L, 4 módulos",15000
 tapete-grande-ikea-lokbyte-azul,Tapete grande IKEA Lokbyte azul,1500
 mesa-comedor,"Mesa de comedor cuadrada Mobica Corsa, 8 personas",13000
 sillas-comedor,8 sillas de comedor Gaia,3500
-mueble-tocadiscos,Mueble para tocadiscos hecho a la medida,6000
+mueble-tocadiscos,Mueble para tocadiscos hecho a la medida,5000
 mueble-tv,Mueble de TV con cajones,3500
 cama-colchon-queen,Cama IKEA Malm Queen con colchón,12000
 cama-king,Cama King tapizada con colchón,15000
 poltrona-boal,Poltrona individual Boal,5500
 sofa-tv,"Sofá estilo Cloud con chaise, 2 módulos",10000
-mesa-comedor-oficina,Mesa de madera para comedor o escritorio (2 disponibles),4000
+mesa-comedor-oficina,Mesa de madera para comedor o escritorio,4000
 librero,Librero IKEA Billy,1500
 zapatero,Banca / zapatero industrial,800
 mesa-de-noche-1,"Buró IKEA Kullen, 2 cajones",600
@@ -20,7 +20,7 @@ cama-mascota,Cama redonda para perro mediano,700
 tapete-gris-rombos,Tapete gris con rombos,500
 lavadora-y-secadora,"Lavadora y secadora Samsung, carga frontal",10000
 mesas-de-noche-par,Par de mesas de noche de madera,3000
-tv-samsung-65,"Pantalla Samsung QLED 65"" Q80T",9500
+tv-samsung-65,"Pantalla Samsung QLED 65"" Q80T",8250
 tv-the-frame-55,"Pantalla Samsung The Frame 55"" con base caballete",10500
 aire-acondicionado-pinguino,Aire acondicionado portátil De'Longhi Pinguino,3000
 air-fryer-ninja,Freidora de aire Ninja DoubleStack,1500
@@ -31,3 +31,68 @@ estante-whalen-uso-rudo,"Estante de uso rudo Whalen, 5 repisas (aguanta 2,268 kg
 asador-kitchenaid,Asador de carbón KitchenAid tipo carrito,6000
 futon,Futón con colchón capitonado,4000
 sofa-sala-3-plazas,Sofá de 1 módulo en tela beige (3 plazas),5000
+ebike-commencal-meta,"eBike Commencal Meta, talla M",50000
+sillas-acapulco,2 sillas Acapulco blancas,2000
+microondas-panasonic,Microondas Panasonic Inverter 1.2 pies,1500
+monitor-benq-27,"Monitor BenQ GW2780 de 27"" Full HD",1800
+mesa-camping-coleman,Mesa de camping Coleman de aluminio,1100
+purificador-aire,Purificador de aire de torre,700
+cartas-nauticas-enmarcadas,2 cartas náuticas enmarcadas: Yucatán e Isla Mujeres,1500
+nutribullet,Nutribullet,550
+licuadora-oster,Licuadora Oster con vaso de vidrio,500
+mini-procesador-oster,Mini procesador Oster con tazón de vidrio,450
+arepera-holstein,Arepera eléctrica Holstein,400
+tostador-oster,"Tostador Oster de acero, 2 rebanadas",350
+plancha-vapor-viaje,Plancha de vapor de viaje,300
+dispensador-bebidas,Dispensador de bebidas de vidrio,250
+batidora-taurus,Batidora de mano Taurus,220
+bolas-criollas,Set de bolas criollas con bolsa,500
+guantes-box-krav-maga,Guantes de box Krav Maga Worldwide,400
+equipo-ejercicio,"Equipo de ejercicio: rodillo, tobilleras y liga",300
+masajeador,Masajeador,100
+gorro-natacion-nike,Gorro de natación Nike de silicona (nuevo),180
+cinturon-natacion,Cinturón de entrenamiento para nadar en alberca,150
+mat-yoga,Mat de yoga con funda,150
+barras-lagartijas,Barras para lagartijas,100
+juego-akropolis,Juego de mesa Akropolis,350
+juego-exploding-kittens,Juego de cartas Exploding Kittens,220
+lamparas-techo-led-x2,2 lámparas LED de techo inteligentes (nuevas),550
+silla-oficina-malla,Silla de oficina de malla,550
+espejo-luz-led,Espejo de tocador con luz LED,300
+mesa-cama-laptop-1,Mesa de cama para laptop (madera),200
+mesa-cama-laptop-2,Mesa de cama para laptop con puertos USB,200
+repisas-ikea-bambu,Repisas IKEA de bambú,100
+maceta-ceramica-verde,Maceta de cerámica verde con plato,200
+lampara-ikea-holmo,Lámpara de pie IKEA Hölmö,100
+canasta-fibra,Canasta de fibra natural,150
+colgador-escobas,Colgador de escobas y trapeadores,50
+ollas-sartenes,Juego de ollas y sartenes,300
+sartenes-3,3 sartenes con mango de acero,600
+toppers-vidrio-cuadrados,Toppers de vidrio cuadrados (2 juegos),450
+copas-vino-12,12 copas de vino,1200
+utensilios-cocina-20,Juego de utensilios de cocina (~20 piezas),350
+cubiertos-40,Juego de cubiertos (~40 piezas),500
+cuchillos-bloque,Juego de cuchillos con bloque de madera,300
+toppers-vidrio-redondos,Toppers de vidrio redondos,300
+escurridor-2-niveles,Escurridor de trastes de 2 niveles,250
+utensilios-nylon-5,Utensilios de cocina de nylon (5 piezas),220
+tablas-bambu-3,3 tablas de bambú para picar o servir,150
+cuchillos-montana,Juego de cuchillos Montana (12 piezas),200
+toppers-plastico,Toppers de plástico con tapa hermética,200
+utensilios-parrilla,Juego de utensilios para parrilla (4 piezas),200
+refractario-ceramico,Refractario cerámico,170
+bowls-mickey,2 bowls de Mickey,150
+medidor-pyrex,Taza medidora Pyrex de vidrio,120
+afilador-cuchillos,Afilador de cuchillos,120
+jarra-plastico,Jarra de plástico,90
+jarra-vidrio,Jarra de vidrio con tapa,70
+rallador,Rallador de acero,70
+lengua-de-suegra,Jardinera de lengua de suegra,300
+monsteras-x2,2 Monsteras con maceta,1000
+olivo,Olivo en maceta,600
+ficus-pandurata,Ficus pandurata con maceta,500
+palos-de-brasil,2 palos de Brasil con maceta,400
+calathea-con-base,Calathea con maceta y base de madera,350
+orquideas-x3,3 orquídeas con maceta,300
+plantas-varias,Plantas varias,300
+maceta-planta-recuperar,Maceta de concreto con planta para recuperar,150
