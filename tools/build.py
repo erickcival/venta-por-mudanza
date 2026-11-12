@@ -148,8 +148,10 @@ def aplicar_estado(items, est):
     for a in items:
         e = est["estados"].get(a["slug"], "disponible")
         a["estado"] = e if e in ESTADOS else "disponible"
-    items.sort(key=lambda a: (CAT_ORDEN.index(a["categoria"]) if a["categoria"] in CAT_ORDEN else 99,
-                              {"vendido": 2, "apartado": 1}.get(a["estado"], 0)))
+    # vendidos al final de todo; dentro de cada bloque, por categoría y apartados al final
+    items.sort(key=lambda a: (a["estado"] == "vendido",
+                              CAT_ORDEN.index(a["categoria"]) if a["categoria"] in CAT_ORDEN else 99,
+                              a["estado"] == "apartado"))
 
 
 # ---------- imágenes ----------
@@ -360,7 +362,7 @@ def pagina_inicio(cfg, items):
     for k, a in enumerate(items):
         foto = (f'<img src="img/{a["_img"][0]}-t.jpg" alt="{esc(a["titulo"])}"{" loading=lazy" if k > 3 else ""}>'
                 if a["_img"] else '<div class="sinfoto">Foto próximamente</div>')
-        cards.append(f"""<article class="card {esc(a.get('estado',''))}" data-cat="{esc(a['categoria'])}" data-slug="{esc(a['slug'])}"{" hidden" if a.get("estado") == "pausado" else ""}>
+        cards.append(f"""<article class="card {esc(a.get('estado',''))}" data-cat="{esc(a['categoria'])}" data-slug="{esc(a['slug'])}" data-ord="{(CAT_ORDEN.index(a['categoria']) if a['categoria'] in CAT_ORDEN else 99) * 1000 + k}"{" hidden" if a.get("estado") == "pausado" else ""}>
 {sello(a)}<a class="foto" href="a/{a['slug']}/">{foto}</a>
 <div class="body"><span class="cat">{esc(a['categoria'])}</span>
 <h2><a href="a/{a['slug']}/">{esc(a['titulo'])}</a></h2><div>{precio_html(cfg, a)}</div>{acciones(cfg, a)}</div></article>""")

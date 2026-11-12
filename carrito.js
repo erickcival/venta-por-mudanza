@@ -137,6 +137,14 @@
       const add = ac.querySelector("[data-add]");
       if (add) add.hidden = apagado;
     });
+    // vendidos siempre al final de la lista (respeta el orden original entre ellos)
+    const grid = document.getElementById("grid");
+    if (grid) {
+      const cards = [...grid.querySelectorAll(":scope > .card[data-slug]")];
+      cards.forEach((c, i) => { if (!c.dataset.ord) c.dataset.ord = i; });
+      cards.sort((a, b) => (estadoDe(a.dataset.slug) === "vendido") - (estadoDe(b.dataset.slug) === "vendido") || a.dataset.ord - b.dataset.ord)
+        .forEach((c) => grid.appendChild(c));
+    }
     const nd = document.getElementById("ndisp");
     if (nd) nd.textContent = Object.keys(V.items).filter(vendible).length;
   }

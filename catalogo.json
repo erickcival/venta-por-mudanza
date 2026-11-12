@@ -66,6 +66,21 @@
    ]
   },
   {
+   "slug": "mueble-tv",
+   "titulo": "Mueble de TV con cajones",
+   "categoria": "Sala",
+   "precio": 3500,
+   "precio_lista": 3500,
+   "descripcion": "Credenza estilo mid-century en madera con frentes grises: dos cajones, una puerta y repisa abierta a un costado.",
+   "detalles": [
+    "Medidas: 180 × 39 × 61 cm (largo × fondo × alto)"
+   ],
+   "_img": [
+    "mueble-tv-1",
+    "mueble-tv-2"
+   ]
+  },
+  {
    "slug": "poltrona-boal",
    "titulo": "Poltrona individual Boal",
    "categoria": "Sala",
@@ -149,21 +164,6 @@
    ]
   },
   {
-   "slug": "mueble-tv",
-   "titulo": "Mueble de TV con cajones",
-   "categoria": "Sala",
-   "precio": 3500,
-   "precio_lista": 3500,
-   "descripcion": "Credenza estilo mid-century en madera con frentes grises: dos cajones, una puerta y repisa abierta a un costado.",
-   "detalles": [
-    "Medidas: 180 × 39 × 61 cm (largo × fondo × alto)"
-   ],
-   "_img": [
-    "mueble-tv-1",
-    "mueble-tv-2"
-   ]
-  },
-  {
    "slug": "mesa-comedor",
    "titulo": "Mesa de comedor cuadrada Mobica Corsa, 8 personas",
    "categoria": "Comedor",
@@ -179,22 +179,6 @@
    "_img": [
     "mesa-comedor-1",
     "mesa-comedor-2"
-   ]
-  },
-  {
-   "slug": "sillas-comedor",
-   "titulo": "8 sillas de comedor Gaia",
-   "categoria": "Comedor",
-   "precio": 3500,
-   "precio_lista": 3500,
-   "descripcion": "Sillas tapizadas en azul petróleo con patas de madera, las que se ven con la mesa de comedor.",
-   "detalles": [
-    "Marca: Gaia",
-    "Cantidad: 8 sillas",
-    "Precio por las 8"
-   ],
-   "_img": [
-    "sillas-comedor-1"
    ]
   },
   {
@@ -234,7 +218,7 @@
    "slug": "mesa-de-noche-1",
    "titulo": "Buró IKEA Kullen, 2 cajones",
    "categoria": "Recámara",
-   "precio": 600,
+   "precio": 300,
    "precio_lista": 600,
    "descripcion": "Buró negro-café con dos cajones.",
    "detalles": [
@@ -249,7 +233,7 @@
    "slug": "mesa-de-noche-2",
    "titulo": "Buró IKEA Brimnes gris",
    "categoria": "Recámara",
-   "precio": 700,
+   "precio": 400,
    "precio_lista": 700,
    "precio_nuevo": 1300,
    "descripcion": "Buró con un cajón con frente de vidrio esmerilado y un nicho abierto.",
@@ -277,7 +261,7 @@
    "slug": "mesas-de-noche-par",
    "titulo": "Par de mesas de noche de madera",
    "categoria": "Recámara",
-   "precio": 3000,
+   "precio": 1900,
    "precio_lista": 3000,
    "descripcion": "Dos mesas de noche estilo mid-century en madera color nogal, con cajón negro y repisa abierta abajo. Se venden en par.",
    "detalles": [
@@ -458,6 +442,42 @@
    ]
   },
   {
+   "slug": "ficus-pandurata",
+   "titulo": "Ficus pandurata con maceta",
+   "categoria": "Plantas",
+   "precio": 500,
+   "precio_lista": 500,
+   "descripcion": "Ficus lyrata (pandurata) alto en maceta de concreto.",
+   "detalles": [],
+   "_img": [
+    "ficus-pandurata-1"
+   ]
+  },
+  {
+   "slug": "calathea-con-base",
+   "titulo": "Calathea con maceta y base de madera",
+   "categoria": "Plantas",
+   "precio": 350,
+   "precio_lista": 350,
+   "descripcion": "Calathea de hojas grandes en maceta con base de madera.",
+   "detalles": [],
+   "_img": [
+    "calathea-con-base-1"
+   ]
+  },
+  {
+   "slug": "plantas-varias",
+   "titulo": "Plantas varias",
+   "categoria": "Plantas",
+   "precio": 300,
+   "precio_lista": 300,
+   "descripcion": "Plantas chicas: macetas colgantes con pothos y otras plantas de interior.",
+   "detalles": [],
+   "_img": [
+    "plantas-varias-1"
+   ]
+  },
+  {
    "slug": "monsteras-x2",
    "titulo": "2 Monsteras con maceta",
    "categoria": "Plantas",
@@ -486,18 +506,6 @@
    ]
   },
   {
-   "slug": "ficus-pandurata",
-   "titulo": "Ficus pandurata con maceta",
-   "categoria": "Plantas",
-   "precio": 500,
-   "precio_lista": 500,
-   "descripcion": "Ficus lyrata (pandurata) alto en maceta de concreto.",
-   "detalles": [],
-   "_img": [
-    "ficus-pandurata-1"
-   ]
-  },
-  {
    "slug": "palos-de-brasil",
    "titulo": "2 palos de Brasil con maceta",
    "categoria": "Plantas",
@@ -512,18 +520,6 @@
    ]
   },
   {
-   "slug": "calathea-con-base",
-   "titulo": "Calathea con maceta y base de madera",
-   "categoria": "Plantas",
-   "precio": 350,
-   "precio_lista": 350,
-   "descripcion": "Calathea de hojas grandes en maceta con base de madera.",
-   "detalles": [],
-   "_img": [
-    "calathea-con-base-1"
-   ]
-  },
-  {
    "slug": "orquideas-x3",
    "titulo": "3 orquídeas con maceta",
    "categoria": "Plantas",
@@ -533,18 +529,6 @@
    "detalles": [],
    "_img": [
     "orquideas-x3-1"
-   ]
-  },
-  {
-   "slug": "plantas-varias",
-   "titulo": "Plantas varias",
-   "categoria": "Plantas",
-   "precio": 300,
-   "precio_lista": 300,
-   "descripcion": "Plantas chicas: macetas colgantes con pothos y otras plantas de interior.",
-   "detalles": [],
-   "_img": [
-    "plantas-varias-1"
    ]
   },
   {
@@ -573,22 +557,6 @@
    ],
    "_img": [
     "tv-samsung-65-1"
-   ]
-  },
-  {
-   "slug": "tv-the-frame-55",
-   "titulo": "Pantalla Samsung The Frame 55\" con base caballete",
-   "categoria": "Electrónica",
-   "precio": 10500,
-   "precio_lista": 10500,
-   "descripcion": "Samsung The Frame de 55 pulgadas: cuando no la usas, muestra arte como si fuera un cuadro. Incluye su base tipo caballete (Studio Stand), así que no necesitas colgarla en la pared.",
-   "detalles": [
-    "55 pulgadas, 4K QLED",
-    "Modo Arte",
-    "Incluye base tipo caballete"
-   ],
-   "_img": [
-    "tv-the-frame-55-1"
    ]
   },
   {
@@ -761,6 +729,25 @@
    "_img": [
     "air-fryer-ninja-1",
     "air-fryer-ninja-2"
+   ]
+  },
+  {
+   "slug": "parrilla-cuisinart",
+   "titulo": "Parrilla / sandwichera Cuisinart Griddler",
+   "categoria": "Cocina",
+   "precio": 1500,
+   "precio_lista": 1500,
+   "descripcion": "Parrilla eléctrica Cuisinart Griddler: se abre como plancha o se cierra como sandwichera/grill de contacto. Placas antiadherentes intercambiables (lisa y estriada).",
+   "detalles": [
+    "Marca: Cuisinart, modelo Griddler",
+    "Placas intercambiables lisa y estriada",
+    "Control de temperatura"
+   ],
+   "_img": [
+    "parrilla-cuisinart-1",
+    "parrilla-cuisinart-2",
+    "parrilla-cuisinart-3",
+    "parrilla-cuisinart-4"
    ]
   },
   {
@@ -1020,39 +1007,6 @@
    ]
   },
   {
-   "slug": "parrilla-cuisinart",
-   "titulo": "Parrilla / sandwichera Cuisinart Griddler",
-   "categoria": "Cocina",
-   "precio": 1500,
-   "precio_lista": 1500,
-   "descripcion": "Parrilla eléctrica Cuisinart Griddler: se abre como plancha o se cierra como sandwichera/grill de contacto. Placas antiadherentes intercambiables (lisa y estriada).",
-   "detalles": [
-    "Marca: Cuisinart, modelo Griddler",
-    "Placas intercambiables lisa y estriada",
-    "Control de temperatura"
-   ],
-   "_img": [
-    "parrilla-cuisinart-1",
-    "parrilla-cuisinart-2",
-    "parrilla-cuisinart-3",
-    "parrilla-cuisinart-4"
-   ]
-  },
-  {
-   "slug": "cafetera-nespresso",
-   "titulo": "Cafetera de cápsulas Nespresso",
-   "categoria": "Cocina",
-   "precio": 500,
-   "precio_lista": 500,
-   "descripcion": "Cafetera compacta de cápsulas Nespresso en gris.",
-   "detalles": [
-    "Usa cápsulas Nespresso Original"
-   ],
-   "_img": [
-    "cafetera-nespresso-1"
-   ]
-  },
-  {
    "slug": "librero",
    "titulo": "Librero IKEA Billy",
    "categoria": "Oficina",
@@ -1246,7 +1200,7 @@
    "slug": "ebike-commencal-meta",
    "titulo": "eBike Commencal Meta, talla M",
    "categoria": "Deporte",
-   "precio": 50000,
+   "precio": 60000,
    "precio_lista": 50000,
    "descripcion": "Bicicleta eléctrica de montaña Commencal Meta de doble suspensión, con motor y pantalla Shimano. Talla M. Muy bien cuidada.",
    "detalles": [
@@ -1354,18 +1308,6 @@
    ]
   },
   {
-   "slug": "mat-yoga",
-   "titulo": "Mat de yoga con funda",
-   "categoria": "Deporte",
-   "precio": 150,
-   "precio_lista": 150,
-   "descripcion": "Tapete de yoga morado con funda para cargar.",
-   "detalles": [],
-   "_img": [
-    "mat-yoga-1"
-   ]
-  },
-  {
    "slug": "barras-lagartijas",
    "titulo": "Barras para lagartijas",
    "categoria": "Deporte",
@@ -1411,6 +1353,64 @@
    "detalles": [],
    "_img": [
     "cama-mascota-1"
+   ]
+  },
+  {
+   "slug": "sillas-comedor",
+   "titulo": "8 sillas de comedor Gaia",
+   "categoria": "Comedor",
+   "precio": 3500,
+   "precio_lista": 3500,
+   "descripcion": "Sillas tapizadas en azul petróleo con patas de madera, las que se ven con la mesa de comedor.",
+   "detalles": [
+    "Marca: Gaia",
+    "Cantidad: 8 sillas",
+    "Precio por las 8"
+   ],
+   "_img": [
+    "sillas-comedor-1"
+   ]
+  },
+  {
+   "slug": "tv-the-frame-55",
+   "titulo": "Pantalla Samsung The Frame 55\" con base caballete",
+   "categoria": "Electrónica",
+   "precio": 10500,
+   "precio_lista": 10500,
+   "descripcion": "Samsung The Frame de 55 pulgadas: cuando no la usas, muestra arte como si fuera un cuadro. Incluye su base tipo caballete (Studio Stand), así que no necesitas colgarla en la pared.",
+   "detalles": [
+    "55 pulgadas, 4K QLED",
+    "Modo Arte",
+    "Incluye base tipo caballete"
+   ],
+   "_img": [
+    "tv-the-frame-55-1"
+   ]
+  },
+  {
+   "slug": "cafetera-nespresso",
+   "titulo": "Cafetera de cápsulas Nespresso",
+   "categoria": "Cocina",
+   "precio": 500,
+   "precio_lista": 500,
+   "descripcion": "Cafetera compacta de cápsulas Nespresso en gris.",
+   "detalles": [
+    "Usa cápsulas Nespresso Original"
+   ],
+   "_img": [
+    "cafetera-nespresso-1"
+   ]
+  },
+  {
+   "slug": "mat-yoga",
+   "titulo": "Mat de yoga con funda",
+   "categoria": "Deporte",
+   "precio": 150,
+   "precio_lista": 150,
+   "descripcion": "Tapete de yoga morado con funda para cargar.",
+   "detalles": [],
+   "_img": [
+    "mat-yoga-1"
    ]
   }
  ]
