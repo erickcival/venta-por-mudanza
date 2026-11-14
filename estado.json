@@ -2,6 +2,7 @@
   "estados": {
     "air-fryer-ninja": "pausado",
     "aire-acondicionado-pinguino": "apartado",
+    "batidora-taurus": "vendido",
     "cafetera-nespresso": "vendido",
     "cama-mascota": "pausado",
     "canasta-fibra": "vendido",
@@ -17,7 +18,6 @@
     "lampara-ikea-holmo": "vendido",
     "lavadora-y-secadora": "vendido",
     "lengua-de-suegra": "vendido",
-    "licuadora-oster": "vendido",
     "maceta-planta-recuperar": "apartado",
     "mat-yoga": "vendido",
     "mesa-de-noche-1": "vendido",
