@@ -2,7 +2,6 @@
   "estados": {
     "afilador-cuchillos": "vendido",
     "air-fryer-ninja": "pausado",
-    "aire-acondicionado-pinguino": "apartado",
     "batidora-taurus": "vendido",
     "cafetera-nespresso": "vendido",
     "cama-mascota": "pausado",
@@ -42,7 +41,6 @@
     "sofa-de-sala": "vendido",
     "sofa-sala-3-plazas": "pausado",
     "tablas-bambu-3": "vendido",
-    "tapete-grande-ikea-lokbyte-azul": "apartado",
     "tapete-gris-rombos": "pausado",
     "toppers-vidrio-cuadrados": "vendido",
     "toppers-vidrio-redondos": "vendido",
