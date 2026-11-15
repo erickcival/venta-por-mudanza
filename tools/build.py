@@ -477,7 +477,7 @@ td.r{text-align:right;font-weight:700;white-space:nowrap}td.c{color:#6f655a;font
 
 
 def pdf_html(cfg, items):
-    items = [a for a in items if a.get("estado") != "pausado"]
+    items = [a for a in items if a.get("estado") not in ("pausado", "vendido")]  # el PDF solo lleva lo que se puede comprar
     portada = next((a for a in items if a["_img"]), None)
     chips = "".join(f"<span>{c}</span>" for c in re.findall(r'<span class="pill">(.*?)</span>', meta_pills(cfg)))
     pags = [f"""<section class="pag portada">
