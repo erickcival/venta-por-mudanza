@@ -200,7 +200,14 @@ header.hero{padding:40px 0 20px}
 .hero p{margin:0;color:var(--muted);max-width:60ch}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px}
-.filtros{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.barrabusca{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:12px}
+.busca{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.busca:focus-within{border-color:var(--ink)}
+.busca input{flex:1;min-width:0;font:inherit;font-size:16px;border:0;background:transparent;color:var(--ink);padding:11px 0;outline:none}
+.busca input::-webkit-search-cancel-button{display:none}
+.busca button{font:inherit;border:0;background:none;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;padding:4px}
+.sinres{grid-column:1/-1;text-align:center;color:var(--muted);padding:32px 0}
+.filtros{padding:12px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .filtros button{flex:none;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
 .filtros button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;padding:20px 0 40px}
@@ -354,6 +361,12 @@ def meta_pills(cfg):
     return "".join(f'<span class="pill">{p}</span>' for p in out)
 
 
+def clave_busqueda(a):
+    t = " ".join([a.get("titulo", ""), a.get("categoria", ""), a.get("descripcion", "")] + list(a.get("detalles", [])))
+    t = unicodedata.normalize("NFD", t.lower())
+    return " ".join("".join(c for c in t if unicodedata.category(c) != "Mn").split())
+
+
 def pagina_inicio(cfg, items):
     cats = [c for c in CAT_ORDEN if any(a["categoria"] == c for a in items)]
     disp = sum(a.get("estado") in ("disponible", "apartado") for a in items)
@@ -362,7 +375,7 @@ def pagina_inicio(cfg, items):
     for k, a in enumerate(items):
         foto = (f'<img src="img/{a["_img"][0]}-t.jpg" alt="{esc(a["titulo"])}"{" loading=lazy" if k > 3 else ""}>'
                 if a["_img"] else '<div class="sinfoto">Foto próximamente</div>')
-        cards.append(f"""<article class="card {esc(a.get('estado',''))}" data-cat="{esc(a['categoria'])}" data-slug="{esc(a['slug'])}" data-ord="{(CAT_ORDEN.index(a['categoria']) if a['categoria'] in CAT_ORDEN else 99) * 1000 + k}"{" hidden" if a.get("estado") == "pausado" else ""}>
+        cards.append(f"""<article class="card {esc(a.get('estado',''))}" data-cat="{esc(a['categoria'])}" data-slug="{esc(a['slug'])}" data-q="{esc(clave_busqueda(a))}" data-ord="{(CAT_ORDEN.index(a['categoria']) if a['categoria'] in CAT_ORDEN else 99) * 1000 + k}"{" hidden" if a.get("estado") == "pausado" else ""}>
 {sello(a)}<a class="foto" href="a/{a['slug']}/">{foto}</a>
 <div class="body"><span class="cat">{esc(a['categoria'])}</span>
 <h2><a href="a/{a['slug']}/">{esc(a['titulo'])}</a></h2><div>{precio_html(cfg, a)}</div>{acciones(cfg, a)}</div></article>""")
@@ -374,17 +387,23 @@ def pagina_inicio(cfg, items):
 <p>Me mudo y todo esto busca nuevo hogar. Toca un artículo para ver más fotos y medidas. ¿Te interesa una sola cosa? Usa «Lo quiero». ¿Varias? Agrégalas al carrito y mándame la lista completa por WhatsApp.</p>
 <div class="meta">{meta_pills(cfg)}<span class="pill">📦 <span id="ndisp">{disp}</span> disponibles</span></div>
 <a class="pdfbtn" id="pdflink" href="{cfg['_pdf']}" download="Venta por mudanza - catalogo.pdf">📄 Descargar catálogo en PDF</a></header>
-<nav class="filtros" aria-label="Categorías">{botones}<label class="toggle"><input type="checkbox" id="ov"> Ocultar vendidos</label></nav>
-<main class="grid" id="grid">{''.join(cards)}</main>
+<div class="barrabusca"><label class="busca"><span aria-hidden="true">🔍</span><input type="search" id="q" placeholder="Buscar: sofá, lámpara, ganchos…" autocomplete="off" aria-label="Buscar artículos"><button type="button" id="qx" aria-label="Borrar búsqueda" hidden>×</button></label>
+<nav class="filtros" aria-label="Categorías">{botones}<label class="toggle"><input type="checkbox" id="ov"> Ocultar vendidos</label></nav></div>
+<main class="grid" id="grid">{''.join(cards)}<p class="sinres" id="sinres" hidden>No encontré nada con esa búsqueda. Prueba otra palabra o escríbeme por WhatsApp.</p></main>
 <footer>¿Dudas o quieres ver algo en persona? Escríbeme por WhatsApp al {esc(wa_bonito(cfg))}. · Descarga el <a href="{cfg['_pdf']}" download="Venta por mudanza - catalogo.pdf">catálogo en PDF</a> para compartirlo.</footer></div>
 {f'<a class="fab" id="fab" href="{esc(wa_general(cfg))}" target="_blank" rel="noopener">{WA_ICON} WhatsApp</a>' if wa_general(cfg) else ''}
 {scripts("")}<script>
 const g=document.getElementById('grid'),bs=document.querySelectorAll('.filtros button');
-bs.forEach(b=>b.onclick=()=>{{bs.forEach(x=>x.setAttribute('aria-pressed',x===b));const f=b.dataset.f;
-g.querySelectorAll('.card').forEach(c=>c.style.display=(f==='*'||c.dataset.cat===f)?'':'none')}});
+const q=document.getElementById('q'),qx=document.getElementById('qx'),sr=document.getElementById('sinres');
+const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');
+const filtra=()=>{{const f=document.querySelector('.filtros [aria-pressed=true]').dataset.f,ps=norm(q.value).split(/\\s+/).filter(Boolean);let n=0;
+g.querySelectorAll('.card').forEach(c=>{{const ok=(f==='*'||c.dataset.cat===f)&&ps.every(p=>c.dataset.q.includes(p));c.style.display=ok?'':'none';
+if(ok&&!c.hidden&&!(ov.checked&&c.classList.contains('vendido')))n++}});qx.hidden=!q.value;sr.hidden=n>0}};
+bs.forEach(b=>b.onclick=()=>{{bs.forEach(x=>x.setAttribute('aria-pressed',x===b));filtra()}});
+q.oninput=filtra;qx.onclick=()=>{{q.value='';filtra();q.focus()}};
 window.FILTRO_ACTIVO=()=>document.querySelector('.filtros [aria-pressed=true]');
 const ov=document.getElementById('ov');try{{ov.checked=localStorage.getItem('ov')==='1'}}catch(e){{}}
-const ap=()=>{{g.classList.toggle('ocultar-vendidos',ov.checked);try{{localStorage.setItem('ov',ov.checked?'1':'0')}}catch(e){{}}}};ov.onchange=ap;ap();
+const ap=()=>{{g.classList.toggle('ocultar-vendidos',ov.checked);try{{localStorage.setItem('ov',ov.checked?'1':'0')}}catch(e){{}}}};ov.onchange=()=>{{ap();filtra()}};ap();
 </script></body></html>"""
 
 
