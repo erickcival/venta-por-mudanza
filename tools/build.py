@@ -26,7 +26,7 @@ IMG = SITIO / "img"
 EXT = {".heic", ".jpg", ".jpeg", ".png", ".webp"}
 CHROME = os.environ.get("CHROME") or shutil.which("google-chrome") or "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ESTADOS = ("disponible", "apartado", "vendido", "pausado")
-CAT_ORDEN = ["Sala", "Comedor", "Recámara", "Hogar", "Plantas", "Electrónica", "Electrodomésticos", "Cocina", "Oficina", "Terraza", "Bodega", "Deporte", "Juegos", "Otros"]
+CAT_ORDEN = ["Sala", "Comedor", "Recámara", "Hogar", "Plantas", "Electrónica", "Electrodomésticos", "Cocina", "Oficina", "Terraza", "Bodega", "Deporte", "Juegos", "Libros", "Otros"]
 
 esc = lambda s: html.escape(str(s or ""), quote=True)
 
